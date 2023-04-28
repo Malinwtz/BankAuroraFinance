@@ -1,0 +1,134 @@
+﻿@page
+@model Bank.Pages.Customers.EditCustomerModel
+@{
+    ViewData["Title"] = "Edit Customer";
+}
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+
+<!-- Masthead-->
+<header class="masthead pt-5 bg-black">
+    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
+        <div class="justify-content-center pt-200">
+
+
+            <div class="text-center">
+
+                <div class="card">
+                    <div class="card-header bg-dark">
+                        <h1>Edit Customer</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label asp-for="Gender">Gender</label>
+                                <select class="form-control"
+                                        asp-for="Gender"
+                                        asp-items="@Model.Genders"></select>
+                                <span asp-validation-for="Gender"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Givenname">First name</label>
+                                <input class="form-control"
+                                       placeholder="Insert first name here" 
+                                       asp-for="Givenname">
+                                <span asp-validation-for="Givenname"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Surname">Last name</label>
+                                <input class="form-control"
+                                       placeholder="Insert last name here" 
+                                       asp-for="Surname">
+                                <span asp-validation-for="Surname"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Streetaddress">Street address</label>
+                                <input class="form-control"
+                                       placeholder="Insert street address here" 
+                                       asp-for="Streetaddress">
+                                <span asp-validation-for="Streetaddress"
+                                      class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Zipcode">Zip code</label>
+                                <input class="form-control"
+                                       placeholder="Insert zip code here" 
+                                       asp-for="Zipcode">
+                                <span asp-validation-for="Zipcode"
+                                      class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="City">City</label>
+                                <input class="form-control"
+                                       placeholder="Insert city here" 
+                                       asp-for="City">
+                                <span asp-validation-for="City"
+                                      class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Country">Country</label>
+                                <input class="form-control"
+                                       placeholder="Insert country here" 
+                                       asp-for="Country">
+                                <span asp-validation-for="Country"
+                                      class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Birthday">Birth date</label>
+                                <input class="form-control"
+                                       placeholder="Insert birth date here" 
+                                       asp-for="Birthday">
+                                <span asp-validation-for="Birthday"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="NationalId">National Id</label>
+                                <input class="form-control"
+                                       placeholder="Insert national Id here" 
+                                       asp-for="NationalId">
+                                <span asp-validation-for="NationalId"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Telephonenumber">Telephone number</label>
+                                <input class="form-control"
+                                       placeholder="Insert telephone number here"
+                                       asp-for="Telephonenumber">
+                                <span asp-validation-for="Telephonenumber"
+                                      class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Emailaddress">Email</label>
+                                <input class="form-control"
+                                       placeholder="Insert email here"
+                                       asp-for="Emailaddress">
+                                <span asp-validation-for="Emailaddress"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</header>
+
+@section Scripts
+    {
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

@@ -1,0 +1,43 @@
+﻿@page
+@model Bank.Pages.Accounts.AccountModel
+@{
+    ViewData["Title"] = "Account";
+}
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+
+<!-- Masthead-->
+<header class="masthead pt-5 bg-black">
+    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
+        <div class="justify-content-center pt-200">
+
+            <div class="text-center">
+                <h1 class="display-4 pt-5">Account No @Model.SingleAccount.AccountId</h1>
+
+                <table class="table table-striped table-dark">
+                    <tbody>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <td>@Model.SingleAccount.AccountId</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Balance</th>
+                        <td>@Model.SingleAccount.Balance</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Frequency</th>
+                        <td>@Model.SingleAccount.Frequency</td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Created</th>
+                        <td>@Model.SingleAccount.Created</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</header>

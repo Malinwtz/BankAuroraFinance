@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bank", "Bank\Bank.csproj", "{27F17B02-5347-4A33-8C2D-9B7091C1F620}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{83A7D603-1984-44D3-BD40-C3C4418F083E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuroraFinanceAPI", "AuroraFinanceAPI\AuroraFinanceAPI.csproj", "{C864E762-D3D2-49F3-A5C7-C5784DE18412}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27F17B02-5347-4A33-8C2D-9B7091C1F620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F17B02-5347-4A33-8C2D-9B7091C1F620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F17B02-5347-4A33-8C2D-9B7091C1F620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F17B02-5347-4A33-8C2D-9B7091C1F620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83A7D603-1984-44D3-BD40-C3C4418F083E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83A7D603-1984-44D3-BD40-C3C4418F083E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83A7D603-1984-44D3-BD40-C3C4418F083E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83A7D603-1984-44D3-BD40-C3C4418F083E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C864E762-D3D2-49F3-A5C7-C5784DE18412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C864E762-D3D2-49F3-A5C7-C5784DE18412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C864E762-D3D2-49F3-A5C7-C5784DE18412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C864E762-D3D2-49F3-A5C7-C5784DE18412}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A99C9EFE-CDE0-4496-9C83-B0584C511DC4}
+	EndGlobalSection
+EndGlobal

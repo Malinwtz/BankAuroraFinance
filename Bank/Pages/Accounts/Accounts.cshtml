@@ -1,0 +1,215 @@
+﻿@page
+@model Bank.Pages.Accounts.AccountsModel
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+
+<!-- Masthead-->
+<header class="masthead pt-5 bg-black">
+    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
+        <div class="justify-content-center pt-200">
+
+            <div class="text-center">
+                <h1 class="display-4  pt-5">All Accounts </h1>
+
+                @*SÖK*@
+                <form method="get" class="m-3">
+                    <input asp-for="@Model.Q" />
+                    <input type="hidden" asp-for="@Model.Country" />
+                    <input type="submit" value="Search" />
+                </form>
+
+                <table class="table table-striped table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Id
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Id"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="asc"
+                                   style="text-decoration: none">
+                                    <i class="fa-solid fa-angle-up"></i>
+                                </a>
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Id"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="desc"
+                                   style="text-decoration:none">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </a>
+                            </th>
+                            <th scope="col">
+                                Balance
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Balance"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="asc"
+                                   style="text-decoration: none">
+                                    <i class="fa-solid fa-angle-up"></i>
+                                </a>
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Balance"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="desc"
+                                   style="text-decoration:none">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </a>
+                            </th>
+                            <th scope="col">
+                                Frequency
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Frequency"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="asc"
+                                   style="text-decoration: none">
+                                    <i class="fa-solid fa-angle-up"></i>
+                                </a>
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Frequency"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="desc"
+                                   style="text-decoration:none">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </a>
+                            </th>
+                            <th scope="col">
+                                Created
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Created"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="asc"
+                                   style="text-decoration: none">
+                                    <i class="fa-solid fa-angle-up"></i>
+                                </a>
+                                <a asp-page="/Accounts/Accounts"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="Created"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-sortOrder="desc"
+                                   style="text-decoration:none">
+                                    <i class="fa-solid fa-angle-down"></i>
+                                </a>
+                            </th>
+                            <th>Transfer</th>
+                      
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var a in Model.Accounts)
+                        {
+                            <tr>
+                                <td>@a.AccountId</td>
+                                <td>@a.Balance</td>
+                                <td>@a.Frequency</td>
+                                <td>@a.Created.ToShortDateString()</td>
+
+                                <td>
+                                    <a class="m-2" asp-page="/Accounts/Withdraw"
+                                   asp-route-accountId="@a.AccountId">
+                                        <i class="fa-regular fa-square-minus"></i></a>
+
+                                    <a class="m-2" asp-page="/Accounts/Deposit"
+                                   asp-route-accountId="@a.AccountId">
+                                        <i class="fa-regular fa-square-plus"></i></a>
+
+                                    <a class="m-2" asp-page="/Accounts/Transaction"
+                                   asp-route-accountId="@a.AccountId">
+                                        <i class="fa-solid fa-plus-minus"></i></a>
+                                </td>
+
+
+                                <td><a asp-page="/Accounts/Account" 
+                                    asp-route-accountId="@a.AccountId" 
+                                    class="btn btn-sm btn-primary">View</a>
+                                </td>
+
+                            </tr>
+                        }
+                        <tr>
+                            <td>
+                                @if (Model.CurrentPage != 1)
+                                {
+                                    <a class="btn btn-lg btn-close-white"
+                                   asp-page="/Accounts/Accounts"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="@Model.SortColumn"
+                                   asp-route-sortOrder="@Model.SortOrder"
+                                   asp-route-pageNo="@(Model.CurrentPage - 1)">
+                                        Prev
+                                    </a>
+                                }
+                            </td>
+                            <td colspan="4">
+                                @for (int i = 1; i <= Model.PageCount; i++)
+                                {
+                                    string activeBtn = "btn-close-white";
+                                    if (i == Model.CurrentPage)
+                                    {
+                                        activeBtn = "btn-primary";
+                                    }
+
+                                    <a class="btn @activeBtn"
+                                   asp-page="/Accounts/Accounts"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="@Model.SortColumn"
+                                   asp-route-sortOrder="@Model.SortOrder"
+                                   asp-route-pageNo="@i">
+                                        @i
+                                    </a>
+                                }
+                            </td>
+                            <td>
+                                @if (Model.CurrentPage != Model.LastPage)
+                                {
+                                    <a class="btn btn-lg btn-close-white"
+                                   asp-page="/Accounts/Accounts"
+                                   asp-route-country="@Model.Country"
+                                   asp-route-q="@Model.Q"
+                                   asp-route-sortColumn="@Model.SortOrder"
+                                   asp-route-sortOrder="@Model.SortOrder"
+                                   asp-route-pageNo="@(Model.CurrentPage + 1)">
+                                        Next
+                                    </a>
+                                }
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Signup-->
+<section class="signup-section" id="signup">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-10 col-lg-8 mx-auto text-center">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Contact-->
+<section class="contact-section bg-black">
+    <div class="container px-4 px-lg-5">
+    </div>
+</section>

@@ -1,0 +1,72 @@
+﻿@page
+@model Bank.Pages.Users.CreateUserModel
+@{
+    ViewData["Title"] = "Create User";
+    var successMessage = ViewData["Message"]?.ToString(); //ta bort
+}
+
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+
+
+<!-- Masthead-->
+<header class="masthead pt-5 bg-black">
+    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
+        <div class="justify-content-center pt-200">
+
+            <div class="text-center">
+
+                <div class="card">
+                    <div class="card-header bg-dark">
+                        <h1>Create new user</h1>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="post">
+                            <div class="mb-3">
+                                <label class="form-label">LoginName</label>
+                                <input type="text" class="form-control"
+                                       asp-for="CreateUserRequest.LoginName" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">FirstName</label>
+                                <input type="text" class="form-control"
+                                       asp-for="CreateUserRequest.FirstName" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">LastName</label>
+                                <input type="text" class="form-control"
+                                       asp-for="CreateUserRequest.LastName" />
+                            </div>
+
+                            @if (!string.IsNullOrWhiteSpace(successMessage))
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @successMessage
+                                </div>
+                            }
+
+                            <div>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                         
+
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</header>
+
+@section Scripts
+{
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

@@ -1,0 +1,68 @@
+﻿@page
+@model Bank.Pages.Accounts.DepositModel
+@{
+    ViewData["Title"] = "Deposit";
+}
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+
+<!-- Masthead-->
+<header class="masthead pt-5 bg-black">
+    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
+        <div class="justify-content-center pt-200">
+
+            <div class="text-center mt-5">
+                
+                <div class="card mt-5">
+
+                    <div class="card-header bg-dark">
+                        <h1>Deposit</h1>
+                    </div>
+
+                    <div class="card-body">
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label asp-for="Amount">Amount</label>
+                                <input class="form-control" asp-for="Amount"/>
+                                <span class="text-danger"
+                                      asp-validation-for="Amount">
+                                </span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="TransactionDate">Date</label>
+                                <input class="form-control" asp-for="TransactionDate" />
+                                <span class="text-danger"
+                                      asp-validation-for="TransactionDate">
+                                </span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Comment">Comment</label>
+                                <input class="form-control"
+                                       placeholder="Please insert comment here"
+                                        asp-for="Comment"/>
+                                <span class="text-danger"
+                                      asp-validation-for="Comment">
+                                </span>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Deposit</button>
+
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+@section Scripts
+{
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

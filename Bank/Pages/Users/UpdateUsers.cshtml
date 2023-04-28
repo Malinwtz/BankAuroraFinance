@@ -1,0 +1,95 @@
+﻿@page
+@model Bank.Pages.Users.UpdateUsersModel
+@{
+    var updateMessage = ViewData["Message"]?.ToString();
+}
+
+
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+
+
+<!-- Masthead-->
+<header class="masthead pt-5 bg-black">
+    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
+        <div class="justify-content-center pt-200">
+
+            <div class="text-center">
+
+                <div class="card">
+                    <div class="card-header bg-dark">
+                        <h1>Update User</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+
+                            <div class="mb-3">
+                                <label class="form-label">Id</label>
+                                <input type="text" class="form-control"
+                                       asp-for="UpdateUserVM.Id" readonly />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Login name</label>
+                                <input type="text" class="form-control"
+                                       asp-for="UpdateUserVM.LoginName" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">First name</label>
+                                <input type="text" class="form-control"
+                                       asp-for="UpdateUserVM.FirstName" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Last name</label>
+                                <input type="text" class="form-control"
+                                       asp-for="UpdateUserVM.LastName" />
+                            </div>
+
+                            @if (!string.IsNullOrWhiteSpace(updateMessage))
+                            {
+                                <div class="alert alert-success" role="alert">
+                                    @updateMessage
+                                </div>
+                            }
+
+                            <div class="d-flex justify-content-center">
+
+                                <div class="mb-3">
+                                    <button asp-page="ReadUsers"
+                                            class="btn btn-secondary">
+                                        Back
+                                    </button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-primary">
+                                        Update
+                                    </button>
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-danger"
+                                            asp-page-handler="DeleteUser">
+                                        Delete
+                                    </button>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+@section Scripts
+{
+    <partial name="Shared/_ValidationScriptsPartial" />
+}

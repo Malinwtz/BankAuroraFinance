@@ -1,0 +1,160 @@
+﻿@page
+@model Bank.Pages.Users.ReadUsersModel
+@{
+    ViewData["Title"] = "All Users";
+}
+
+<head>
+    <link href="~/css/styles.css" rel="stylesheet" />
+</head>
+
+<!-- Masthead-->
+<header class="masthead pt-5 bg-black">
+    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
+        <div class="justify-content-center pt-5">
+
+
+            <div class="text-center pt-5">
+
+                <div class="card">
+                    <div class="card-header bg-dark">
+                        <h1>@Model.TotalUsers Users</h1>
+                    </div>
+                    <div class="card-body">
+
+                        <div class=" m-3">
+                            <a asp-page="/Users/CreateUser"
+                               class="btn btn-sm btn-primary">
+                                Add User
+                            </a>
+                        </div>
+
+                        @if(Model.Users != null && Model.Users.Any())
+                        {
+                          
+
+                            <table class="table table-striped">
+                                <thead>
+
+                                    <form method="get" class="m-3">
+                                        <input asp-for="@Model.Q" />
+                                        <input type="hidden" asp-for="@Model.Users" />
+                                        <input type="submit" value="Search" />
+                                    </form>
+
+                                    <tr>
+
+                                        <th scope="col">
+                                            Id
+                                            <a asp-page="/Users/ReadUsers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="asc"
+                                               style="text-decoration: none">
+                                                <i class="fa-solid fa-angle-up"></i>
+                                            </a>
+                                            <a asp-page="/Users/ReadUsers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="desc"
+                                               style="text-decoration:none">
+                                                <i class="fa-solid fa-angle-down"></i>
+                                            </a>
+                                        </th>
+                                        <th scope="col">
+                                            Login name
+                                            <a asp-page="/Users/ReadUsers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="asc"
+                                               style="text-decoration: none">
+                                                <i class="fa-solid fa-angle-up"></i>
+                                            </a>
+                                            <a asp-page="/Customers/Customers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="desc"
+                                               style="text-decoration:none">
+                                                <i class="fa-solid fa-angle-down"></i>
+                                            </a>
+                                        </th>
+                                        <th scope="col">
+                                            First name
+                                            <a asp-page="/Users/ReadUsers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="asc"
+                                               style="text-decoration: none">
+                                                <i class="fa-solid fa-angle-up"></i>
+                                            </a>
+                                            <a asp-page="/Customers/Customers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="desc"
+                                               style="text-decoration:none">
+                                                <i class="fa-solid fa-angle-down"></i>
+                                            </a>
+                                        </th>
+                                        <th scope="col">
+                                            Last name
+                                            <a asp-page="/Users/ReadUsers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="asc"
+                                               style="text-decoration: none">
+                                                <i class="fa-solid fa-angle-up"></i>
+                                            </a>
+                                            <a asp-page="/Customers/Customers"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Id"
+                                           asp-route-country="@Model.Users"
+                                           asp-route-sortOrder="desc"
+                                               style="text-decoration:none">
+                                                <i class="fa-solid fa-angle-down"></i>
+                                            </a>
+                                        </th>
+                                   
+                                        <th> </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var u in Model.Users)
+                                    {
+                                        <tr>
+                                            <td>@u.UserId</td>
+                                            <td>@u.LoginName</td>
+                                            <td>@u.FirstName</td>
+                                            <td>@u.LastName</td>
+                                            <td>
+                                                <a asp-page="UpdateUsers"
+                                                    asp-route-id="@u.UserId"
+                                                    class="btn btn-primary mx-2">
+                                                    Update
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>No users found</p>
+                        }
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</header>
+
