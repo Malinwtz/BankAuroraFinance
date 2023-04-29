@@ -32,7 +32,17 @@ namespace TransactionMonitor
 
 
             Console.WriteLine(transactionsOver15000.Count());
+
             Console.WriteLine(transactionsOver23000.Count());
+
+            foreach(var transaction in transactionsOver23000)
+            {
+                Console.WriteLine(transaction.Account.AccountId);
+
+            }
+
+
+
 
             //----------------------------------------------------------------------------------
 

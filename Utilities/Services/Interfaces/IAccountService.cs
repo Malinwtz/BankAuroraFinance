@@ -2,7 +2,6 @@
 using Utilities.Models;
 using Utilities;
 using Utilities.ViewModels;
-
 namespace Utilities.Services.Interfaces;
 
 public interface IAccountService
@@ -20,5 +19,5 @@ public interface IAccountService
     void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance);
     PagedResult<TransactionViewModel> GetTransactions(int customerId, int pageNum);
     List<Transaction> GetTransactionsOver15000();
-    List<Transaction> GetTransactionsOver23000();
+    List<AccountWithSuspectTransactions> GetTransactionsOver23000();
 }

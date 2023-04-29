@@ -146,7 +146,7 @@ public class AccountService : IAccountService
             }
         }
 
-        if (amount < 100 || amount > 10000)
+        if (amount < 100 || amount > 25000)
         {
             return ErrorCode.IncorrectAmount;
         }
@@ -211,7 +211,7 @@ public class AccountService : IAccountService
         return suspectTransactions;
     }
 
-    public List<Transaction> GetTransactionsOver23000()
+    public List<AccountWithSuspectTransactions> GetTransactionsOver23000()
     {
         //var suspectTransactions = _dbContext.Transactions
         //   .Where(t => t.Date < DateTime.Now.AddDays(-3)            
@@ -223,13 +223,31 @@ public class AccountService : IAccountService
         var totalAmountThreshold = 23000;
 
         var suspectTransactions = _dbContext.Transactions
-            .Where(t =>t.Date >= fromDate)
+            .Where(t => t.Date >= fromDate)
             .GroupBy(t => t.AccountId)
-            .Where(g => g.Sum(a => a.Amount) > totalAmountThreshold)
-            .SelectMany(g => g)
+            .Select(g => new
+            {
+                AccountId = g.First().AccountId,
+                Transactions = g.Count(),
+                TotalAmount = g.Sum(s => s.Amount)
+            })
+            .Where(g => g.TotalAmount > totalAmountThreshold)
             .ToList();
-        
-        return suspectTransactions;
+
+        var accountIds = suspectTransactions.Select(st => st.AccountId).ToList();
+
+        var accounts = _dbContext.Accounts.Where(a => accountIds.Contains(a.AccountId)).ToList();
+        var accountsWithTransactions = new List<AccountWithSuspectTransactions>();
+        foreach (var account in accounts)
+        {
+            accountsWithTransactions.Add(new AccountWithSuspectTransactions()
+            {
+                Account = account,
+                Transactions = _dbContext.Transactions.Where(t => t.Date >= fromDate && t.AccountId == account.AccountId).ToList(),
+            });
+        }
+
+        return accountsWithTransactions;
     }
 }
 

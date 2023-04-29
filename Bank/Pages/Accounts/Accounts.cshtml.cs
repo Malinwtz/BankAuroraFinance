@@ -51,7 +51,7 @@ namespace Bank.Pages.Accounts
             var result = _accountService.GetSortedAccountsFromDatabase(
                 sortColumn, sortOrder, pageNo, q);
 
-           
+
 
             //Accounts = result.Results
             //    .Select(a => new AccountViewModel
@@ -62,9 +62,10 @@ namespace Bank.Pages.Accounts
             //        Created = a.Created
 
             //    }).ToList();
+            Accounts = result.Results.Select(_mapper.Map<Account, AccountViewModel>).ToList();
 
             // Use AutoMapper to map the results to view models
-            Accounts = _mapper.Map<List<AccountViewModel>>(result.Results);
+            //Accounts = _mapper.Map<List<AccountViewModel>>(result.Results);
 
             PageCount = result.PageCount;
         }
