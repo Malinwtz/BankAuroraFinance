@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Utilities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Utilities.Services.Interfaces;
-using Bank.Services;
+using Utilities.Services;
 using Utilities.ViewModels;
 
 namespace Bank.Pages.Users

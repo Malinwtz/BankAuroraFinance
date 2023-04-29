@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Utilities;
 
-namespace Bank.Services;
+namespace Utilities.Services;
 
 public class AccountService : IAccountService
 {
@@ -164,7 +164,6 @@ public class AccountService : IAccountService
         return ErrorCode.Ok;
     }
 
-
     public void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance)
     {        
         _dbContext.Transactions.Add(
@@ -201,6 +200,36 @@ public class AccountService : IAccountService
                }).GetPaged(pageNum, 10); //använder mig av pagination för att json result ska veta hur många  den ska ladda in
 
         return transactions;
+    }
+
+    public List<Transaction> GetTransactionsOver15000()
+    {
+        var suspectTransactions = _dbContext.Transactions
+           .Where(t => t.Date < DateTime.Now.AddDays(-1) && t.Amount > 15000)
+           .ToList();
+
+        return suspectTransactions;
+    }
+
+    public List<Transaction> GetTransactionsOver23000()
+    {
+        //var suspectTransactions = _dbContext.Transactions
+        //   .Where(t => t.Date < DateTime.Now.AddDays(-3)            
+        //        && t.Balance > 23000)
+        //   .ToList();
+
+        var fromDate = DateTime.Now.AddDays(-3);
+
+        var totalAmountThreshold = 23000;
+
+        var suspectTransactions = _dbContext.Transactions
+            .Where(t =>t.Date >= fromDate)
+            .GroupBy(t => t.AccountId)
+            .Where(g => g.Sum(a => a.Amount) > totalAmountThreshold)
+            .SelectMany(g => g)
+            .ToList();
+        
+        return suspectTransactions;
     }
 }
 

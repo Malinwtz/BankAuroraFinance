@@ -1,7 +1,7 @@
 ﻿using Utilities.Models;
 using Utilities.Services.Interfaces;
 
-namespace Bank.Services
+namespace Utilities.Services
 {
     public class SingleAccountService : ISingleAccountService
     {

@@ -19,4 +19,6 @@ public interface IAccountService
     void WithdrawOrDeposit(int accountId, decimal amount, bool deposition);
     void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance);
     PagedResult<TransactionViewModel> GetTransactions(int customerId, int pageNum);
+    List<Transaction> GetTransactionsOver15000();
+    List<Transaction> GetTransactionsOver23000();
 }

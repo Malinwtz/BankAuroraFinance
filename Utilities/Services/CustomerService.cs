@@ -6,7 +6,8 @@ using Utilities.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
-namespace Bank.Services;
+
+namespace Utilies.Services;
 
 public class CustomerService : ICustomerService
 {

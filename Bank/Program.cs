@@ -1,12 +1,13 @@
 using Utilities.Data;
 using Utilities.Models;
-using Bank.Services;
+using Utilities.Services;
 using Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Utilities.Services.Interfaces;
 using Utilities.Infrastructure;
+using Utilies.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

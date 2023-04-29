@@ -4,7 +4,7 @@ using Utilities.Models;
 using Utilities.Services.Interfaces;
 using Utilities.ViewModels;
 
-namespace Bank.Services
+namespace Utilities.Services
 {
     public class UserService : IUserService
     {

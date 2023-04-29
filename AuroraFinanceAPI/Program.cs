@@ -15,7 +15,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 //DI databas
 // Lägg till min DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
