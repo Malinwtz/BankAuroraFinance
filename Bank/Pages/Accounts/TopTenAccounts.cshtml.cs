@@ -26,9 +26,9 @@ namespace Bank.Pages.Accounts
         {
 
             Country = country;
-            
+
             Accounts = _accountService.GetTopTenAccounts();
-           
+
         }
     }
 }

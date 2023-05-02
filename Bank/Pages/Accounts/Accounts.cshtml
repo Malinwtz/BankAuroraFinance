@@ -8,12 +8,14 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 
-<!-- Masthead-->
-<header class="masthead pt-5 bg-black">
-    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
-        <div class="justify-content-center pt-200">
 
-            <div class="text-center">
+
+<!-- Signup-->
+<section class="signup-section" id="signup">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5">
+            <div class=" text-center">
+
                 <h1 class="display-4  pt-5">All Accounts </h1>
 
                 @*SÖK*@
@@ -103,7 +105,7 @@
                                 </a>
                             </th>
                             <th>Transfer</th>
-                      
+
                             <th> </th>
                         </tr>
                     </thead>
@@ -120,21 +122,25 @@
                                 <td>
                                     <a class="m-2" asp-page="/Accounts/Withdraw"
                                    asp-route-accountId="@a.AccountId">
-                                        <i class="fa-regular fa-square-minus"></i></a>
+                                        <i class="fa-regular fa-square-minus"></i>
+                                    </a>
 
                                     <a class="m-2" asp-page="/Accounts/Deposit"
                                    asp-route-accountId="@a.AccountId">
-                                        <i class="fa-regular fa-square-plus"></i></a>
+                                        <i class="fa-regular fa-square-plus"></i>
+                                    </a>
 
                                     <a class="m-2" asp-page="/Accounts/Transaction"
                                    asp-route-accountId="@a.AccountId">
-                                        <i class="fa-solid fa-plus-minus"></i></a>
+                                        <i class="fa-solid fa-plus-minus"></i>
+                                    </a>
                                 </td>
 
 
-                                <td><a asp-page="/Accounts/Account" 
-                                    asp-route-accountId="@a.AccountId" 
-                                    class="btn btn-sm btn-primary">View</a>
+                                <td>
+                                    <a asp-page="/Accounts/Account"
+                                   asp-route-accountId="@a.AccountId"
+                                       class="btn btn-sm btn-primary">View</a>
                                 </td>
 
                             </tr>
@@ -194,11 +200,22 @@
                     </tbody>
                 </table>
 
+
             </div>
         </div>
     </div>
-</header>
+</section>
 
+<!-- Contact-->
+<section class="bg-black h-auto">
+</section>
+<!-- Contact-->
+
+
+
+
+
+@*
 <!-- Signup-->
 <section class="signup-section" id="signup">
     <div class="container px-4 px-lg-5">
@@ -213,3 +230,4 @@
     <div class="container px-4 px-lg-5">
     </div>
 </section>
+*@

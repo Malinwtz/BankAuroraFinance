@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Util
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuroraFinanceAPI", "AuroraFinanceAPI\AuroraFinanceAPI.csproj", "{C864E762-D3D2-49F3-A5C7-C5784DE18412}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionMonitor", "TransactionMonitor\TransactionMonitor.csproj", "{569DBDF9-F2B1-4966-A459-EA33601D8EF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TransactionMonitor", "TransactionMonitor\TransactionMonitor.csproj", "{569DBDF9-F2B1-4966-A459-EA33601D8EF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
