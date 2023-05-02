@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace Bank.Pages.Accounts
 {    
     [ResponseCache(Duration = 30, VaryByQueryKeys = new[] { "country" })]
-    [Authorize(Roles = "Cashier")]
+   
     public class TopTenAccountsModel : PageModel
     {
       
