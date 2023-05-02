@@ -16,9 +16,9 @@ namespace Utilities.Data
         }
         public void SeedData()
         {
-            _dbContext.Database.Migrate();
-            SeedRoles();
-            SeedUsers();
+            //_dbContext.Database.Migrate();
+            //SeedRoles();
+            //SeedUsers();
         }
 
         // Här finns möjlighet att uppdatera dina användares loginuppgifter
