@@ -16,12 +16,11 @@ namespace Utilities.Data
         }
         public void SeedData()
         {
-            //_dbContext.Database.Migrate();
-            //SeedRoles();
-            //SeedUsers();
+            _dbContext.Database.Migrate();
+            SeedRoles();
+            SeedUsers();
         }
 
-        // Här finns möjlighet att uppdatera dina användares loginuppgifter
         private void SeedUsers()
         {
             AddUserIfNotExists("richard.chalk@systementor.se", "Hejsan123#", new string[] { "Admin" });
