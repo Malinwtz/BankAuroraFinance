@@ -52,7 +52,11 @@
                             <th scope="col">@row.BalancePerCountry</th>
                             
                             @*för att komma till rätt sida måste asp-route-id (id) vara samma som i account onget-parameter *@
-                            <td><a asp-page="/Accounts/TopTenAccounts" asp-route-country="@row.Country" class="btn btn-primary">View</a></td>
+                            <td> 
+                                <a asp-page="/Accounts/TopTenAccounts" 
+                                asp-route-country="@row.Country" 
+                                class="btn btn-primary">View</a>
+                            </td>
                         </tr>
                     }
                     </tbody>

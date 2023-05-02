@@ -72,26 +72,26 @@ public class AccountService : IAccountService
 
     public List<AccountViewModel> GetTopTenAccounts()
     {
-        //var accounts = _dbContext.Accounts
-        //    .OrderByDescending(a => a.Balance)
-        //    .Take(10)
-        //    .Select(a => new AccountViewModel
-        //    {
-        //        AccountId = a.AccountId,
-        //        Balance = a.Balance,
-        //        Frequency = a.Frequency,
-        //        Created = a.Created
-
-        //    }).ToList();
-
-        //return accounts;
-
         var accounts = _dbContext.Accounts
             .OrderByDescending(a => a.Balance)
             .Take(10)
-            .ToList();
+            .Select(a => new AccountViewModel
+            {
+                AccountId = a.AccountId,
+                Balance = a.Balance,
+                Frequency = a.Frequency,
+                Created = a.Created
 
-        return _mapper.Map<List<AccountViewModel>>(accounts);
+            }).ToList();
+
+        return accounts;
+
+        //var accounts = _dbContext.Accounts
+        //    .OrderByDescending(a => a.Balance)
+        //    .Take(10)
+        //    .ToList();
+
+        //return _mapper.Map<List<AccountViewModel>>(accounts);     //object not set to an instance?? funkar inte med azure??
     }
 
     public int GetLastPageNo()
