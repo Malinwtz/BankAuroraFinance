@@ -50,7 +50,7 @@ namespace Bank.Pages.Users
 
         public void OnPost()
         {
-            var userToUpdate = _dbContext.Users.Find(UpdateUserVM.Id);
+            var userToUpdate = _dbContext.Users.Find(UpdateUserVM.Id); //guid och id matchar inte - konvertera guid till id
 
             if (ModelState.IsValid)
             {
