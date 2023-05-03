@@ -17,4 +17,13 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Application.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Program.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
 </Project>

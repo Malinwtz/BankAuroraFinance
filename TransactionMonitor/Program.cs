@@ -24,6 +24,7 @@ builder.Services.AddDbContext<BankAppDataContext>(options =>
 
 
 builder.Services.AddTransient<IAccountService, AccountService>();
+builder.Services.AddTransient<ITransactionMonitorService, TransactionMonitorService>();
 
 
 

@@ -19,5 +19,7 @@ public interface IAccountService
     void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance);
     PagedResult<TransactionViewModel> GetTransactions(int customerId, int pageNum);
     List<Transaction> GetTransactionsOver15000();
+    //List<TransactionViewModel> GetOneCountryTransactionsOver15000();
     List<AccountWithSuspectTransactions> GetTransactionsOver23000();
+    Customer GetSuspiciousCustomer(int transactionId);
 }

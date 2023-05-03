@@ -11,84 +11,64 @@ namespace TransactionMonitor
 {
     public class Application
     {
-        public Application(IAccountService accountService)
+        public Application(IAccountService accountService, ITransactionMonitorService transactionMonitorService)
         {
             _accountService = accountService;
+            _transactionMonitorService = transactionMonitorService;
         }
         private readonly IAccountService _accountService;
+        private readonly ITransactionMonitorService _transactionMonitorService;
 
         public void Run()
         {
             //hämta transaktioner per land 
-            //hämta transaktioner/kund som är större än gränsen
-
-            //om enskild transaktion är större än 15000 eller 
-            //totala transaktioner är större än 230000 inom de 72 senaste timmarna/3 senaste dygnen
-            //är det lika med en misstänkt transaktion - skriv till en textfil
-
             var transactionsOver15000 = _accountService.GetTransactionsOver15000();
-
             var transactionsOver23000 = _accountService.GetTransactionsOver23000();
+            //var sweTransactionsOver15000 = _accountService.GetOneCountryTransactionsOver15000();
+            //Console.WriteLine(sweTransactionsOver15000.Count);
 
 
-            Console.WriteLine(transactionsOver15000.Count());
+            var folderSE = "SuspiciousTransfersSE";
+            var folderNO = "SuspiciousTransfersNO";
+            var folderFI = "SuspiciousTransfersFI";
+            var folderDK = "SuspiciousTransfersDK";
 
-            Console.WriteLine(transactionsOver23000.Count());
+            var filePathSE = _transactionMonitorService.CreateFolderWithPath(folderSE);
+            var filePathNO = _transactionMonitorService.CreateFolderWithPath(folderNO);
+            var filePathFI = _transactionMonitorService.CreateFolderWithPath(folderFI);
+            var filePathDK = _transactionMonitorService.CreateFolderWithPath(folderDK);
 
-            foreach(var transaction in transactionsOver23000)
+
+            foreach (var transaction in transactionsOver15000)
             {
-                Console.WriteLine(transaction.Account.AccountId);
+                var customer = _accountService.GetSuspiciousCustomer(transaction.AccountId);
 
+                var line = $"Customer: {customer.CustomerId}, Account: {transaction.AccountId}, Transaction: {transaction.TransactionId}," +
+                        $" Amount: {transaction.Amount}, Date: {transaction.Date}";
+                
+                var filePath = "";
+                if (customer.Country == "Sweden") filePath = filePathSE;
+                if (customer.Country == "Norway") filePath = filePathNO;
+                if (customer.Country == "Finland") filePath = filePathFI;
+                if (customer.Country == "Denmark") filePath = filePathDK; // dk is used by another process
+
+                File.AppendAllText(filePath, Environment.NewLine + line);
             }
+            foreach (var transaction in transactionsOver23000)
+            {
+                var customer = _accountService.GetSuspiciousCustomer(transaction.Account.AccountId);
 
+                //lägg till transaction id
+                var line = $"Customer: {customer.CustomerId}, Account: {transaction.Account.AccountId}";
 
+                var filePath = "";
+                if (customer.Country == "Sweden") filePath = filePathSE;
+                if (customer.Country == "Norway") filePath = filePathNO;
+                if (customer.Country == "Finland") filePath = filePathFI;
+                if (customer.Country == "Denmark") filePath = filePathDK;
 
-
-            //----------------------------------------------------------------------------------
-
-            //var transactions = _dbContext.Transactions.Where(t => t.country == "Finland");
-
-            //var suspectTransactions = transactions
-            //    .Where(t => t.amount > 15000);
-
-            ////hämta en lista med alla transaktioner från samma kund från de senaste tre dagarna
-            //var suspectTransactions3days = _dbcontext.Transactions
-            //    .Where(t=>t.date < DateTime.Now.AddDays(-3));
-
-            //if (amount > 23000)
-            //{
-            //    var suspectTransactions = new List<Transaction>();
-            //    suspectTransactions.Add(transaction);
-            //}
-
-
-            //if (amount >15000 || amount)
-            //{
-            //    var suspectTransactions = new List<Transaction>();
-            //    suspectTransactions.Add(transaction);
-
-
-            //        var fileName = DateTime.Now.ToString("RECEIPT_yyy-MM-dd") + ".txt";
-            //        var lastNumber = GetNumberOfReceipt();
-            //        var numberLine = $"KVITTO NR {lastNumber}";
-            //        File.AppendAllText(fileName, Environment.NewLine);
-            //        File.AppendAllText(fileName, numberLine + Environment.NewLine);
-
-            //        foreach (var row in suspectTransactions)
-            //        {
-            //            var line = $"{row.TransactionId} {row.AccountId} * {row.Date} = {row.Amount}kr";
-            //            File.AppendAllText(fileName, line + Environment.NewLine);
-            //        }
-
-            //        var total = $"Total: {Convert.ToString(CalculateTotal())}kr";
-            //        File.AppendAllText(fileName, total + Environment.NewLine);
-
-
-            //}
-
-
+                File.AppendAllText(filePath, Environment.NewLine + line);
+            }
         }
-
-
     }
 }

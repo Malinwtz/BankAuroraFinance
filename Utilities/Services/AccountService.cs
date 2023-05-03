@@ -130,7 +130,7 @@ public class AccountService : IAccountService
             //transaction.Balance -= amount;
         }
 
-        _dbContext.SaveChanges();      
+        _dbContext.SaveChanges();
     }
 
     public ErrorCode ReturnErrorCode(int accountId, decimal amount, string comment, bool deposition)
@@ -165,7 +165,7 @@ public class AccountService : IAccountService
     }
 
     public void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance)
-    {        
+    {
         _dbContext.Transactions.Add(
             new Transaction
             {
@@ -177,10 +177,10 @@ public class AccountService : IAccountService
                 Operation = "Credit in Cash"
             });
 
-        var account = _dbContext.Accounts.First(a=> a.AccountId == accountId);
+        var account = _dbContext.Accounts.First(a => a.AccountId == accountId);
         account.Balance = balance;
 
-        _dbContext.SaveChanges();    
+        _dbContext.SaveChanges();
     }
 
     public PagedResult<TransactionViewModel> GetTransactions(int customerId, int pageNum)
@@ -189,7 +189,7 @@ public class AccountService : IAccountService
                .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
                .Where(a => a.AccountNavigation.Dispositions.Any(d => d.CustomerId == customerId))
                .OrderByDescending(d => d.Date)
-               //nedan kan tas bort när man har en automapper men just nu måste man definera properies aka binda dom
+               //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda dom
                .Select(s => new TransactionViewModel
                {
                    TransactionId = s.TransactionId,
@@ -197,7 +197,7 @@ public class AccountService : IAccountService
                    Type = s.Type,
                    Amount = s.Amount,
                    Balance = s.Balance
-               }).GetPaged(pageNum, 10); //använder mig av pagination för att json result ska veta hur många  den ska ladda in
+               }).GetPaged(pageNum, 10); 
 
         return transactions;
     }
@@ -211,13 +211,40 @@ public class AccountService : IAccountService
         return suspectTransactions;
     }
 
+
+    //public List<TransactionViewModel> GetOneCountryTransactionsOver15000()
+    //{
+    ////    var suspectTransactions = _dbContext.Transactions
+    ////        .Include(t => t.AccountNavigation)
+    ////        .ThenInclude(a => a.Dispositions)
+    ////        .ThenInclude(d => d.Customer)
+    ////       .Where(t => t.AccountNavigation.Dispositions.Any(d => d.Customer.Country == "Sweden")
+    ////                && t.Date < DateTime.Now.AddDays(-1) && t.Amount > 15000)
+    ////       .ToList();
+
+    ////var suspectTransactions2 = await _dbContext.Transactions
+    ////    .Where(t => t.AccountNavigation.Dispositions.Any(d => d.Customer.Country == "Sweden")
+    ////            && t.Date < DateTime.Now.AddDays(-1) && t.Amount > 15000)
+    ////    .ToListAsync();
+
+    //        var suspectTransactions = _dbContext.Transactions
+    //        .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
+    //        .Where(a => a.Date < DateTime.Now.AddDays(-1) && a.Amount > 15000
+    //                && a.AccountNavigation.Dispositions.Any(d => d.Customer.Country == "Sweden") )
+    //        .Select(s => new TransactionViewModel
+    //        {
+    //            TransactionId = s.TransactionId,
+    //            Date = s.Date,
+    //            Type = s.Type,
+    //            Amount = s.Amount,
+    //            Balance = s.Balance
+    //        }).ToList();
+
+    //    return suspectTransactions;
+    //}
+
     public List<AccountWithSuspectTransactions> GetTransactionsOver23000()
     {
-        //var suspectTransactions = _dbContext.Transactions
-        //   .Where(t => t.Date < DateTime.Now.AddDays(-3)            
-        //        && t.Balance > 23000)
-        //   .ToList();
-
         var fromDate = DateTime.Now.AddDays(-3);
 
         var totalAmountThreshold = 23000;
@@ -238,6 +265,7 @@ public class AccountService : IAccountService
 
         var accounts = _dbContext.Accounts.Where(a => accountIds.Contains(a.AccountId)).ToList();
         var accountsWithTransactions = new List<AccountWithSuspectTransactions>();
+
         foreach (var account in accounts)
         {
             accountsWithTransactions.Add(new AccountWithSuspectTransactions()
@@ -248,6 +276,17 @@ public class AccountService : IAccountService
         }
 
         return accountsWithTransactions;
+    }
+
+
+    public Customer GetSuspiciousCustomer(int accountId)
+    {
+        var customer = _dbContext.Customers
+            .Include(t => t.Dispositions)
+            .ThenInclude(d => d.Account)
+            .FirstOrDefault(a => a.Dispositions.Any(d => d.Account.AccountId == accountId));
+            
+        return customer;
     }
 }
 

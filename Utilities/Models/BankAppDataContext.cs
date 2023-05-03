@@ -9,6 +9,8 @@ namespace Utilities.Models
     {
         public BankAppDataContext()
         {
+            //lagt till pga seg databas
+           // this.Database.SetCommandTimeout(500);
         }
 
         public BankAppDataContext(DbContextOptions<BankAppDataContext> options)
