@@ -17,6 +17,16 @@
             <div class=" text-center">
 
                 <h1 class="display-4  pt-5">All Accounts </h1>
+               
+                <div class="d-flex justify-content-center">
+                    <div class="m-3">
+                        <a asp-page="/Index"
+                           class="btn btn-sm btn-secondary">
+                            Back
+                        </a>
+                    </div>
+                </div>
+
 
                 @*SÖK*@
                 <form method="get" class="m-3">
@@ -25,6 +35,7 @@
                     <input type="submit" value="Search" />
                 </form>
 
+           
                 <table class="table table-striped table-dark">
                     <thead>
                         <tr>

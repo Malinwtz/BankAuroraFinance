@@ -11,7 +11,6 @@ namespace Utilies.Services;
 
 public class CustomerService : ICustomerService
 {
-    //customerservice har databaskopplingen och här görs hämtningen från dbcontext
     public CustomerService(BankAppDataContext dbContext, IMapper mapper)
     {
         _dbContext = dbContext;

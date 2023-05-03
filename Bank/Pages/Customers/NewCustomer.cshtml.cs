@@ -28,7 +28,7 @@ namespace Bank.Pages.Customers
 
 
         [Required(ErrorMessage = "Gender is required")]
-        [Range(1, 3, ErrorMessage = "Please choose a valid gender")]
+        //[Range(1, 3, ErrorMessage = "Please choose a valid gender")]
         public GenderEnum Gender { get; set; }
         
         public List<SelectListItem> Genders { get; set; }
@@ -50,7 +50,7 @@ namespace Bank.Pages.Customers
 
 
         [StringLength(15, ErrorMessage = "Max length of zip code is 15 characters")]
-        [RegularExpression(@"\d+", ErrorMessage = "Zip code has to be in digits")]
+        //[RegularExpression(@"\d+", ErrorMessage = "Zip code has to be in digits")]
         [Required(ErrorMessage = "Zipcode is required")]
         public string Zipcode { get; set; }
 
@@ -61,14 +61,14 @@ namespace Bank.Pages.Customers
 
 
         [Required(ErrorMessage = "Country is required")]
-        [Range(1, 4, ErrorMessage = "Please choose a valid country")]
+        //[Range(1, 4, ErrorMessage = "Please choose a valid country")]
         public CountryEnum Country { get; set; }
 
 
         public List<SelectListItem> Countries { get; set; }
 
 
-        [Required(ErrorMessage = "Birthday is required")]
+        //[Required(ErrorMessage = "Birthday is required")]
         public DateTime Birthday { get; set; }
 
 
@@ -77,28 +77,29 @@ namespace Bank.Pages.Customers
         public string CountryCode { get; set; }
 
 
-        [MinLength(10, ErrorMessage = "You have to write a national Id with minimum of 10 characters")]
+        //[MinLength(10, ErrorMessage = "You have to write a national Id with minimum of 10 characters")]
         [MaxLength(20, ErrorMessage = "National Id max length is 20 characters")]
         //[RegularExpression(@"\d+", ErrorMessage = "National Id has to be in digits")]
-        [Required(ErrorMessage = "National Id is required")]
+        //[Required(ErrorMessage = "National Id is required")]
         public string NationalId { get; set; }
 
 
-        [Required(ErrorMessage = "Telephone country code is required")]
+        //[Required(ErrorMessage = "Telephone country code is required")]
+        [RegularExpression(@"\d+", ErrorMessage = "Telephone country code has to be in digits")]
         [MaxLength(10, ErrorMessage = "Max length of telephone number is 10 characters")]
         public string Telephonecountrycode { get; set; }
 
 
         [MaxLength(25, ErrorMessage = "Telephone number max length is 25 digits")]
         //[RegularExpression(@"\d+", ErrorMessage = "Telephone number has to be in digits")]
-        [Required(ErrorMessage = "Telephone number is required")]
+        //[Required(ErrorMessage = "Telephone number is required")]
         public string Telephonenumber { get; set; }
 
 
         [StringLength(100, ErrorMessage = "Max length of email is 100 characters")]
         [EmailAddress(ErrorMessage = 
             "Email has to contain @ and end with . followed by top level domain")]
-        [Required(ErrorMessage = "Email is required")]
+        //[Required(ErrorMessage = "Email is required")]
         public string Emailaddress { get; set; }
 
 

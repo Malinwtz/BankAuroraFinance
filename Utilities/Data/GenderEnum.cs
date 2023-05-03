@@ -2,7 +2,6 @@
 {
     public enum GenderEnum
     {
-        Choose,
         female,
         male,
         other

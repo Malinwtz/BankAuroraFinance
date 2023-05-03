@@ -2,7 +2,6 @@
 {
     public enum CountryEnum
     {
-        Choose,
         Finland,
         Norway,
         Sweden,

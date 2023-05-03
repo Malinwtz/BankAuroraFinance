@@ -20,6 +20,18 @@
                     <div class="card-header bg-dark">
                         <h1>Edit Customer</h1>
                     </div>
+
+
+                    <div class="d-flex justify-content-center">
+                        <div class="m-3">
+                            <a asp-page="/Customers/Customers"
+                               class="btn btn-sm btn-secondary">
+                                Back
+                            </a>
+                        </div>
+                    </div>
+
+
                     <div class="card-body">
                         <form method="post">
 
@@ -27,15 +39,16 @@
                                 <label asp-for="Gender">Gender</label>
                                 <select class="form-control"
                                         asp-for="Gender"
-                                        asp-items="@Model.Genders"></select>
-                                <span asp-validation-for="Gender"
-                                      class="text-danger"></span>
+                                        asp-items="@Model.Genders">
+                                    <option value="">-- Select gender --</option>
+                                </select>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Givenname">First name</label>
                                 <input class="form-control"
-                                       placeholder="Insert first name here" 
+                                       placeholder="Insert first name here"
                                        asp-for="Givenname">
                                 <span asp-validation-for="Givenname"
                                       class="text-danger"></span>
@@ -44,7 +57,7 @@
                             <div class="form-group">
                                 <label asp-for="Surname">Last name</label>
                                 <input class="form-control"
-                                       placeholder="Insert last name here" 
+                                       placeholder="Insert last name here"
                                        asp-for="Surname">
                                 <span asp-validation-for="Surname"
                                       class="text-danger"></span>
@@ -53,7 +66,7 @@
                             <div class="form-group">
                                 <label asp-for="Streetaddress">Street address</label>
                                 <input class="form-control"
-                                       placeholder="Insert street address here" 
+                                       placeholder="Insert street address here"
                                        asp-for="Streetaddress">
                                 <span asp-validation-for="Streetaddress"
                                       class="text-danger"></span>
@@ -61,7 +74,7 @@
                             <div class="form-group">
                                 <label asp-for="Zipcode">Zip code</label>
                                 <input class="form-control"
-                                       placeholder="Insert zip code here" 
+                                       placeholder="Insert zip code here"
                                        asp-for="Zipcode">
                                 <span asp-validation-for="Zipcode"
                                       class="text-danger"></span>
@@ -69,23 +82,37 @@
                             <div class="form-group">
                                 <label asp-for="City">City</label>
                                 <input class="form-control"
-                                       placeholder="Insert city here" 
+                                       placeholder="Insert city here"
                                        asp-for="City">
                                 <span asp-validation-for="City"
                                       class="text-danger"></span>
                             </div>
+
                             <div class="form-group">
                                 <label asp-for="Country">Country</label>
+                                <select class="form-control"
+                                        asp-for="Country"
+                                        asp-items="@Model.Countries"
+                                        onchange="updateTelephoneCountryCode(this.value)">
+                                    <option value="">-- Select country --</option>
+                                </select>
+                                <span asp-validation-for="Country" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="CountryCode">Country Code</label>
                                 <input class="form-control"
-                                       placeholder="Insert country here" 
-                                       asp-for="Country">
-                                <span asp-validation-for="Country"
+                                       id="CountryCode"
+                                       placeholder="Insert Country Code here"
+                                       asp-for="CountryCode">
+                                <span asp-validation-for="CountryCode"
                                       class="text-danger"></span>
                             </div>
+
                             <div class="form-group">
                                 <label asp-for="Birthday">Birth date</label>
                                 <input class="form-control"
-                                       placeholder="Insert birth date here" 
+                                       placeholder="Insert birth date here"
                                        asp-for="Birthday">
                                 <span asp-validation-for="Birthday"
                                       class="text-danger"></span>
@@ -94,9 +121,19 @@
                             <div class="form-group">
                                 <label asp-for="NationalId">National Id</label>
                                 <input class="form-control"
-                                       placeholder="Insert national Id here" 
+                                       placeholder="Insert national Id here"
                                        asp-for="NationalId">
                                 <span asp-validation-for="NationalId"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label asp-for="Telephonecountrycode">Telephone country code</label>
+                                <input class="form-control"
+                                       id="Telephonecountrycode"
+                                       placeholder="Insert telephone country code here"
+                                       asp-for="Telephonecountrycode">
+                                <span asp-validation-for="Telephonecountrycode"
                                       class="text-danger"></span>
                             </div>
 
@@ -108,6 +145,7 @@
                                 <span asp-validation-for="Telephonenumber"
                                       class="text-danger"></span>
                             </div>
+
                             <div class="form-group">
                                 <label asp-for="Emailaddress">Email</label>
                                 <input class="form-control"
@@ -117,7 +155,11 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Save</button>
+
+                          
+                                <button type="submit" class="btn btn-primary">Save</button>
+                         
+
                         </form>
                     </div>
                 </div>
@@ -131,4 +173,40 @@
 @section Scripts
     {
     <partial name="Shared/_ValidationScriptsPartial" />
+
+
+    <script>
+        function updateTelephoneCountryCode(country) {
+            const countryCodeInput = document.getElementById('CountryCode');
+            const telephoneCountryCodeInput = document.getElementById('Telephonecountrycode');
+            const countryData = {
+                'Sweden': {
+                    'countryCode': 'SE',
+                    'telephoneCountryCode': '46'
+                },
+                'Denmark': {
+                    'countryCode': 'DK',
+                    'telephoneCountryCode': '45'
+                },
+                'Norway': {
+                    'countryCode': 'NO',
+                    'telephoneCountryCode': '47'
+                },
+                'Finland': {
+                    'countryCode': 'FI',
+                    'telephoneCountryCode': '358'
+                },
+            };
+            if (country in countryData) {
+                countryCodeInput.value = countryData[country]['countryCode'];
+                telephoneCountryCodeInput.value = countryData[country]['telephoneCountryCode'];
+            } else {
+                countryCodeInput.value = '';
+                telephoneCountryCodeInput.value = '';
+            }
+        }
+    </script>
+
+
+
 }

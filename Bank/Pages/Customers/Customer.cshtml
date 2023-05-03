@@ -17,12 +17,21 @@
 
                 <h1 class="display-4 pt-5">@Model.SingleCustomer.Givenname @Model.SingleCustomer.Surname </h1>
 
-                <div class=" m-3">
-                    <a asp-page="/Customers/EditCustomer"
-                       asp-route-customerId="@Model.SingleCustomer.CustomerId"
-                       class="btn btn-sm btn-primary">
-                        Edit Customer
-                    </a>
+                <div class="d-flex justify-content-center">
+                    <div class="m-3">
+                        <a asp-page ="/Customers/Customers"
+                           class="btn btn-sm btn-secondary">
+                                Back
+                        </a>
+                    </div>
+
+                    <div class="m-3">
+                        <a asp-page="/Customers/EditCustomer"
+                           asp-route-customerId="@Model.SingleCustomer.CustomerId"
+                           class="btn btn-sm btn-primary">
+                            Edit
+                        </a>
+                    </div>
                 </div>
 
 

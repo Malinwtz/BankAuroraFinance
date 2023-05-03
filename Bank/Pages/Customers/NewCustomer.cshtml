@@ -19,18 +19,27 @@
                     <div class="card-header bg-dark">
                         <h1>Add new Customer</h1>
                     </div>
+
+                    <div class="d-flex justify-content-center">
+                        <div class="m-3">
+                            <a asp-page="/Customers/Customers"
+                               class="btn btn-sm btn-secondary">
+                                Back
+                            </a>
+                        </div>
+                    </div>
+
                     <div class="card-body">
                         <form method="post">
 
                             <div class="form-group">
                                 <label asp-for="Gender">Gender</label>
                                 <select class="form-control"
-                                        placeholder="Insert gender here"
                                         asp-for="Gender"
                                         asp-items="@Model.Genders">
+                                        <option value="">-- Select gender --</option>
                                 </select>
-                                <span asp-validation-for="Gender"
-                                      class="text-danger"></span>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
                             </div>                                                   
 
                             <div class="form-group">
@@ -75,19 +84,15 @@
                                       class="text-danger"></span>
                             </div>
 
-
                             <div class="form-group">
                                 <label asp-for="Country">Country</label>
-
                                 <select class="form-control"
                                         asp-for="Country"
                                         asp-items="@Model.Countries"
                                         onchange="updateTelephoneCountryCode(this.value)">
-                                    <option value="">-- Select country --</option>
+                                        <option value="">-- Select country --</option>
                                 </select>
-
-                                <span asp-validation-for="Country"
-                                      class="text-danger"></span>
+                                <span asp-validation-for="Country" class="text-danger"></span>
                             </div>
 
                             <div class="form-group">
@@ -99,7 +104,6 @@
                                 <span asp-validation-for="CountryCode"
                                       class="text-danger"></span>
                             </div>
-
 
                             <div class="form-group">
                                 <label asp-for="Birthday">Birth date</label>
