@@ -79,7 +79,7 @@ namespace Bank.Pages.Customers
 
         [MinLength(10, ErrorMessage = "You have to write a national Id with minimum of 10 characters")]
         [MaxLength(20, ErrorMessage = "National Id max length is 20 characters")]
-        [RegularExpression(@"\d+", ErrorMessage = "National Id has to be in digits")]
+        //[RegularExpression(@"\d+", ErrorMessage = "National Id has to be in digits")]
         [Required(ErrorMessage = "National Id is required")]
         public string NationalId { get; set; }
 
@@ -90,7 +90,7 @@ namespace Bank.Pages.Customers
 
 
         [MaxLength(25, ErrorMessage = "Telephone number max length is 25 digits")]
-        [RegularExpression(@"\d+", ErrorMessage = "Telephone number has to be in digits")]
+        //[RegularExpression(@"\d+", ErrorMessage = "Telephone number has to be in digits")]
         [Required(ErrorMessage = "Telephone number is required")]
         public string Telephonenumber { get; set; }
 
