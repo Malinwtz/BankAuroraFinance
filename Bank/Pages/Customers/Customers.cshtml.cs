@@ -29,7 +29,7 @@ namespace Bank.Pages
 
         public void OnGet(string country, string sortColumn, string sortOrder,
           int pageNo, string q)
-        {
+        {           
             Q = q;
 
             LastPage = _customerService.GetLastPageNo();

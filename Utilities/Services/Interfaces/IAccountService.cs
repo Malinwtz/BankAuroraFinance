@@ -22,4 +22,5 @@ public interface IAccountService
     //List<TransactionViewModel> GetOneCountryTransactionsOver15000();
     List<AccountWithSuspectTransactions> GetTransactionsOver23000();
     Customer GetSuspiciousCustomer(int transactionId);
+    List<Transaction> GetTransactions(string country);
 }

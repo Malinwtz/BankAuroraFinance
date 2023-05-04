@@ -54,5 +54,9 @@ public class IndexModel : PageModel
                     .Select(d => d.Account.Balance)
                     .Sum()
             }).ToList();
+
+
+
+
     }
 }

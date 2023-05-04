@@ -205,13 +205,14 @@ public class AccountService : IAccountService
     public List<Transaction> GetTransactionsOver15000()
     {
         var suspectTransactions = _dbContext.Transactions
-           .Where(t => t.Date < DateTime.Now.AddDays(-1) && t.Amount > 15000)
+           .Where(t => t.Date < DateTime.Now.AddDays(-1) && t.Amount > 15000)           
            .ToList();
 
         return suspectTransactions;
     }
 
 
+    
     //public List<TransactionViewModel> GetOneCountryTransactionsOver15000()
     //{
     ////    var suspectTransactions = _dbContext.Transactions
@@ -288,6 +289,31 @@ public class AccountService : IAccountService
             
         return customer;
     }
+
+    public List<Transaction> GetTransactions(string country)
+    {
+        var transactionList = _dbContext.Dispositions
+            .Include(d => d.Customer)
+            .Where(c => c.Customer.Country == country)
+            //.Where(c => c.CustomerId == customerId)
+            .SelectMany(a => a.Account.Transactions)
+            .Where(d=>d.Date >= DateTime.Now.AddDays(-7))
+            .OrderByDescending(t => t.TransactionId)
+            .AsNoTracking()
+            .ToList();
+                    
+        //var list = _dbContext.Dispositions.Include(d => d.Customer)
+        //        .Where(c => c.CustomerId == customerId)
+        //        .SelectMany(a => a.Account.Transactions)
+        //        .Where(d => d.Date >= DateTime.Now.AddDays(-7))
+        //        .OrderByDescending(t => t.TransactionId)
+        //        .AsNoTracking()
+        //        .ToList();
+
+        return transactionList;
+    }
+
+
 }
 
 
