@@ -56,7 +56,7 @@
                     <table class="table table-striped table-dark">
                     <thead>
                         <tr>
-                            <th scope="col">
+                            <th class="th-box" scope="col">
                                 Id
                                 <a asp-page="/Customers/Customers"
                                    asp-route-q="@Model.Q"
@@ -207,7 +207,7 @@
                                     </a>
                                 }
                             </td>
-                            <td colspan="4">
+                            <td colspan="5">
                                 @for (int i = 1; i <= Model.PageCount; i++)
                                 {
                                     string activeBtn = "btn-close-white";
@@ -254,17 +254,7 @@
 </section>
 
 
-
-<!-- Contact-->
-<section class="bg-black h-auto">
-  
-</section>
-<!-- Contact-->
-
-
-
 @*
-
 
 <!-- Signup-->
 <section class="signup-section" id="signup">
@@ -275,10 +265,5 @@
         </div>
     </div>
 </section>
-
-<!-- Contact-->
-<section class="bg-black h-auto">
-</section>
-<!-- Contact-->
 
 *@
