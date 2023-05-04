@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
 using Utilities.Infrastructure.Paging;
 using Utilities.Models;
 using Utilities.Services.Interfaces;
@@ -8,9 +9,12 @@ namespace Utilities.Services
 {
     public class UserService : IUserService
     {
-        public UserService(BankAppDataContext dbContext)
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public UserService(BankAppDataContext dbContext, UserManager<IdentityUser> userManager)
         {
             _dbContext = dbContext;
+            _userManager = userManager;
         }
 
         public BankAppDataContext _dbContext { get; }
