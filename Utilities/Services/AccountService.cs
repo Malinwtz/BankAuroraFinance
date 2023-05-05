@@ -179,7 +179,7 @@ public class AccountService : IAccountService
         _dbContext.SaveChanges();
     }
 
-    public PagedResult<TransactionViewModel> GetTransactions(int customerId, int pageNum)
+    public PagedResult<TransactionViewModel> GetTransactionsFromCustomerId(int customerId, int pageNum)
     {
         var transactions = _dbContext.Transactions
                .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
@@ -194,6 +194,25 @@ public class AccountService : IAccountService
                    Amount = s.Amount,
                    Balance = s.Balance
                }).GetPaged(pageNum, 10); 
+
+        return transactions;
+    }
+
+    public PagedResult<TransactionViewModel> GetTransactionsFromAccountId(int accountId, int pageNum)
+    {
+        var transactions = _dbContext.Transactions
+               .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
+               .Where(a => a.AccountNavigation.Dispositions.Any(d => d.AccountId == accountId))
+               .OrderByDescending(d => d.Date)
+               //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda 
+               .Select(s => new TransactionViewModel
+               {
+                   TransactionId = s.TransactionId,
+                   Date = s.Date,
+                   Type = s.Type,
+                   Amount = s.Amount,
+                   Balance = s.Balance
+               }).GetPaged(pageNum, 10);
 
         return transactions;
     }

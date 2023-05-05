@@ -27,56 +27,34 @@ namespace Bank.Pages.Customers
         public int Id { get; set; }
         public string TransactionType { get; set; }
         public decimal Balance { get; set; }
+        public string Today { get; set; }
         public int NumberOfAccounts { get; set; }
         public List<TransactionViewModel> Transactions { get; set; }
         public List<AccountViewModel> Accounts { get; set; }
 
-    
-
 
         public void OnGet(int customerId)
         {
-            //lägg i en metod i SingleCustomerServices
-            SingleCustomer = _customerService.GetCustomerVM(customerId);
-          
-            //Transactions = _singleCustomerService.GetCustomerTransactions(customerId);
+            SingleCustomer = _customerService.GetCustomerVM(customerId);         
 
+            //lägg i service
             var customer = _dbContext.Customers
                 .First(c => c.CustomerId == customerId);
-            Id = customerId;
-            //Name = c.Name;
 
+            Id = customerId;
             Balance = _customerService.GetCustomerBalance(customerId);
             NumberOfAccounts = _customerService.GetNumberOfCustomerAccounts(customerId);
-
-
             Accounts = _customerService.GetAccountVMsForCustomer(customerId);
+            Today = DateTime.Now.ToShortDateString();
         }
 
         public IActionResult OnGetShowMore(int customerId, int pageNum)
         {
-            //hämtar trasactions från databas flytta detta till service
-            var transactions = _accountService.GetTransactions(customerId, pageNum);
+            var transactions = _accountService.GetTransactionsFromCustomerId(customerId, pageNum);
 
-            // _dbContext.Transactions
-            //.Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
-            //.Where(a => a.AccountNavigation.Dispositions.Any(d => d.CustomerId == customerId))
-            //.OrderByDescending(d => d.Date)
-            ////nedan kan tas bort när man har en automabinda dom
-            //.Select(s => new TransactionViewModel
-            //{
-            //    TransactionId = s.TransactionId,
-            //    Date = s.Date,
-            //    Type = s.Type,
-            //    Amount = s.Amount,
-            //    Balance = s.Balance
-            //}).GetPaged(pageNum, 10); //använder mi ska ladda in
+            Transactions = transactions.Results.ToList();
 
-            Transactions = transactions.Results.ToList(); //populerar Transactions lista med min modell
-
-            return new JsonResult(new { Transactions }); //returnerar ny json array
-        }
-
-       
+            return new JsonResult(new { Transactions }); 
+        }       
     }
 }

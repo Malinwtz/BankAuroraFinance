@@ -90,7 +90,7 @@
                             <th scope="col">AccountId</th>
                             <th scope="col">Frequency</th>
                             <th scope="col">Created</th>
-                            <th scope="col">Balance</th>
+                            <th scope="col">Balance @Model.Today</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -134,10 +134,7 @@
     </div>
 </section>
 
-<!-- Contact-->
-<section class="bg-black h-auto">
-</section>
-<!-- Contact-->
+
 
 
 @section Scripts
@@ -166,7 +163,7 @@
                     <td>${element.amount}</td>
                     <td>${element.type}</td>
                     <td>${element.balance}</td>
-                    <td>${element.date}</td>
+                    <td>${element.date.substring(0, 10)}</td>
                     <td>
                         <a class="btn btn-primary" onclick="fetchEvaluation(${element.transactionId}, this)">
                             Show Value

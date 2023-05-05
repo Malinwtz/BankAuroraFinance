@@ -32,7 +32,7 @@
                             <td>@Model.SingleAccount.AccountId</td>
                         </tr>
                         <tr>
-                            <th scope="col">Balance</th>
+                            <th scope="col">Balance @Model.Today</th>
                             <td>@Model.SingleAccount.Balance</td>
                         </tr>
                         <tr>
@@ -46,50 +46,65 @@
                     </tbody>
                 </table>
 
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Contact-->
-<section class="contact-section bg-black">
-    <div class="container px-4 px-lg-5">
-    </div>
-</section>
-
-
-
-@*
-<!-- Masthead-->
-<header class="masthead pt-5 bg-black">
-    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
-        <div class="justify-content-center pt-200">
-
-            <div class="text-center">
-                <h1 class="display-4 pt-5">Account No @Model.SingleAccount.AccountId</h1>
-
-                <table class="table table-striped table-dark">
+                @*Transactions table*@
+                <table class="table table-striped table-dark" id="posts-table">
+                    <thead>
+                        <tr>
+                            <th colspan="5"><h3>Transactions</h3></th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Balance</th>
+                            <th scope="col">Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <tbody>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <td>@Model.SingleAccount.AccountId</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Balance</th>
-                        <td>@Model.SingleAccount.Balance</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Frequency</th>
-                        <td>@Model.SingleAccount.Frequency</td>
-                    </tr>
-                    <tr>
-                        <th scope="col">Created</th>
-                        <td>@Model.SingleAccount.Created</td>
-                    </tr>
                     </tbody>
                 </table>
+                <a class="btn btn-secondary" href="javascript:showMore();">Show More</a>
+
 
             </div>
         </div>
     </div>
-</header>*@
+</section>
+
+@section Scripts
+    {
+    <script>
+        pageNum = 1;
+        AccountId = @Model.SingleAccount.AccountId;
+        document.addEventListener("DOMContentLoaded", function () {
+            showMore();
+        });
+        function showMore() {
+            //pagenum och customerid är känsliga och behöver heta samma som i din onget
+            fetch(`/Accounts/Account?handler=ShowMore&accountId=${AccountId}&pageNum=${pageNum}`)
+                .then((response) => response.json())
+                .then((json) => {
+                    console.log('JSON data:', json); //visar om du får nån json data F12 console.log
+                    pageNum = pageNum + 1;
+                    json.transactions.forEach(drawElements);
+                })
+                .catch((error) => console.log(error)); //error loggning
+        }
+        function drawElements(element) {
+            console.log('Element:', element); //kollar om den får sina element
+            document.querySelector('#posts-table tbody').innerHTML +=
+                `<tr>
+                            <td>${element.amount}</td>
+                            <td>${element.type}</td>
+                            <td>${element.balance}</td>
+                            <td>${element.date.substring(0, 10)}</td>
+                            <td>
+                                <a class="btn btn-primary" onclick="fetchEvaluation(${element.transactionId}, this)">
+                                    Show Value
+                                </a>
+                            </td>
+                        </tr>`;
+        }
+    </script>
+}
