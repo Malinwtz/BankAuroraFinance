@@ -22,5 +22,11 @@ public interface IAccountService
     //List<TransactionViewModel> GetOneCountryTransactionsOver15000();
     List<AccountWithSuspectTransactions> GetTransactionsOver23000();
     Customer GetSuspiciousCustomer(int transactionId);
-    List<Transaction> GetTransactions(string country);
+    List<Transaction> Get24HTransactionsFromCountry(string country);
+    List<Transaction> GetTransfersOver15000(List<Transaction> transactions);
+    List<Transaction> Get72HTransactionsFromCountry(string country);
+    List<Transaction> GetTransfersOver23000(List<Transaction> transactions);
+    void SaveToTextFile(Customer customer, Transaction transaction, string filePath);
+
+
 }

@@ -21,7 +21,8 @@ namespace Bank.Pages.Accounts
 
 
         [Required(ErrorMessage = "Amount is required")]
-        [Range(100, 10000)] 
+        [Range(100, 25000, ErrorMessage =
+            "The amount has to be between 100 and 25000")]
         public decimal Amount { get; set; }
 
 
@@ -45,7 +46,7 @@ namespace Bank.Pages.Accounts
         {
             Balance = _accountService.GetAccount(accountId).Balance;
             Acc = _accountService.GetAccount(accountId).AccountId;
-            TransactionDate = DateTime.UtcNow;
+            TransactionDate = DateTime.UtcNow.AddHours(1);
         }
 
         public IActionResult OnPost(int accountId)

@@ -11,7 +11,6 @@ namespace Utilities.Services;
 
 public class AccountService : IAccountService
 {
-
     public AccountService(BankAppDataContext dbContext, IMapper mapper)
     {
         _dbContext = dbContext;
@@ -117,17 +116,14 @@ public class AccountService : IAccountService
     {
         var accountDb = _dbContext.Accounts
                 .First(a => a.AccountId == accountId);
-        //var transaction = _dbContext.Transactions.First(a => a.AccountId == accountId);
 
         if (deposition == true)
         {
             accountDb.Balance += amount;
-            //transaction.Balance += amount;
         }
         else
         {
-            accountDb.Balance -= amount;
-            //transaction.Balance -= amount;
+            accountDb.Balance -= amount;           
         }
 
         _dbContext.SaveChanges();
@@ -189,7 +185,7 @@ public class AccountService : IAccountService
                .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
                .Where(a => a.AccountNavigation.Dispositions.Any(d => d.CustomerId == customerId))
                .OrderByDescending(d => d.Date)
-               //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda dom
+               //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda 
                .Select(s => new TransactionViewModel
                {
                    TransactionId = s.TransactionId,
@@ -211,38 +207,23 @@ public class AccountService : IAccountService
         return suspectTransactions;
     }
 
+    public List<Transaction> GetTransfersOver15000(List<Transaction> transactions)
+    {
+        var suspiciousTransfers = transactions.Where(t => t.Amount > 15000).ToList();
+        return suspiciousTransfers;
+    }
 
+    public List<Transaction> GetTransfersOver23000(List<Transaction> transactions)
+    {
+        var suspiciousTransfers = transactions
+            .GroupBy(t => t.AccountId)
+            .Where(t => t.Sum(s => s.Amount) > 23000)
+            .SelectMany(g => g)
+            .ToList();
+
+        return suspiciousTransfers;
+    }
     
-    //public List<TransactionViewModel> GetOneCountryTransactionsOver15000()
-    //{
-    ////    var suspectTransactions = _dbContext.Transactions
-    ////        .Include(t => t.AccountNavigation)
-    ////        .ThenInclude(a => a.Dispositions)
-    ////        .ThenInclude(d => d.Customer)
-    ////       .Where(t => t.AccountNavigation.Dispositions.Any(d => d.Customer.Country == "Sweden")
-    ////                && t.Date < DateTime.Now.AddDays(-1) && t.Amount > 15000)
-    ////       .ToList();
-
-    ////var suspectTransactions2 = await _dbContext.Transactions
-    ////    .Where(t => t.AccountNavigation.Dispositions.Any(d => d.Customer.Country == "Sweden")
-    ////            && t.Date < DateTime.Now.AddDays(-1) && t.Amount > 15000)
-    ////    .ToListAsync();
-
-    //        var suspectTransactions = _dbContext.Transactions
-    //        .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
-    //        .Where(a => a.Date < DateTime.Now.AddDays(-1) && a.Amount > 15000
-    //                && a.AccountNavigation.Dispositions.Any(d => d.Customer.Country == "Sweden") )
-    //        .Select(s => new TransactionViewModel
-    //        {
-    //            TransactionId = s.TransactionId,
-    //            Date = s.Date,
-    //            Type = s.Type,
-    //            Amount = s.Amount,
-    //            Balance = s.Balance
-    //        }).ToList();
-
-    //    return suspectTransactions;
-    //}
 
     public List<AccountWithSuspectTransactions> GetTransactionsOver23000()
     {
@@ -275,7 +256,6 @@ public class AccountService : IAccountService
                 Transactions = _dbContext.Transactions.Where(t => t.Date >= fromDate && t.AccountId == account.AccountId).ToList(),
             });
         }
-
         return accountsWithTransactions;
     }
 
@@ -290,40 +270,38 @@ public class AccountService : IAccountService
         return customer;
     }
 
-    public List<Transaction> GetTransactions(string country)
+    public List<Transaction> Get24HTransactionsFromCountry(string country)
     {
         var transactionList = _dbContext.Dispositions
             .Include(d => d.Customer)
             .Where(c => c.Customer.Country == country)
-            //.Where(c => c.CustomerId == customerId)
             .SelectMany(a => a.Account.Transactions)
-            .Where(d=>d.Date >= DateTime.Now.AddDays(-7))
+            .Where(d=>d.Date >= DateTime.Now.AddDays(-1))
             .OrderByDescending(t => t.TransactionId)
             .AsNoTracking()
             .ToList();
-                    
-        //var list = _dbContext.Dispositions.Include(d => d.Customer)
-        //        .Where(c => c.CustomerId == customerId)
-        //        .SelectMany(a => a.Account.Transactions)
-        //        .Where(d => d.Date >= DateTime.Now.AddDays(-7))
-        //        .OrderByDescending(t => t.TransactionId)
-        //        .AsNoTracking()
-        //        .ToList();
 
         return transactionList;
     }
 
+    public List<Transaction> Get72HTransactionsFromCountry(string country)
+    {
+        var transactionList = _dbContext.Dispositions
+           .Include(d => d.Customer)
+           .Where(c => c.Customer.Country == country)
+           .SelectMany(c => c.Account.Transactions)
+           .Where(t => t.Date >= DateTime.Now.AddDays(-3))
+           .OrderByDescending(t => t.TransactionId)
+           .AsNoTracking()
+           .ToList();
 
+        return transactionList;
+    }
+
+    public void SaveToTextFile(Customer customer, Transaction transaction, string filePath)
+    {
+        var line = $"   Customer: {customer.CustomerId}, Account: {transaction.AccountId}, " +
+            $"Transaction: {transaction.TransactionId}, Amount: {transaction.Amount}";
+        File.AppendAllText(filePath, Environment.NewLine + line);
+    }
 }
-
-
-
-
-
-
-//    var query = _dbContext.Customers
-//        .Include(c => c.Dispositions)
-//        .ThenInclude(d => d.Account)
-//        .Where(a => a.Country == country)
-//        .SelectMany(c => c.Dispositions.Select(d => d.Account))
-//        .AsQueryable();

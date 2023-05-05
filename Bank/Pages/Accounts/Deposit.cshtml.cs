@@ -20,8 +20,8 @@ namespace Bank.Pages.Accounts
 
 
         [Required(ErrorMessage = "Amount is required")]
-        [Range(100, 1000, ErrorMessage = 
-            "The amount has to be between 100 and 1000")]
+        [Range(100, 25000, ErrorMessage = 
+            "The amount has to be between 100 and 25000")]
         public decimal Amount { get; set; }
 
         [Required(ErrorMessage = "Date is required")]
@@ -38,7 +38,7 @@ namespace Bank.Pages.Accounts
 
         public void OnGet(int accountId)
         {
-            TransactionDate = DateTime.UtcNow;  
+            TransactionDate = DateTime.UtcNow.AddHours(1);  
         }
 
 
