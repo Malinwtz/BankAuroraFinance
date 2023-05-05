@@ -7,4 +7,4 @@ Transfers (total sum of transfers/account) over 23000:
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
 Time of day: 
-14:57:09.1206484
+14:59:40.1431449

@@ -22,9 +22,6 @@ namespace TransactionMonitor
         private readonly IAccountService _accountService;
         private readonly ITransactionMonitorService _transactionMonitorService;
 
-
-        public List<Transaction> ListOf24HTransactionsByCountry { get; set; }
-        public List<Transaction> ListOf72HTransactionsByCountry { get; set; }
         public void Run()
         {
             RunCountry("Sweden", "SuspiciousTransfersSE");
@@ -50,10 +47,10 @@ namespace TransactionMonitor
                     return;
                 }               
             }      
-                ListOf24HTransactionsByCountry = _accountService.Get24HTransactionsFromCountry(country, lastTimeOfDay);
-                ListOf72HTransactionsByCountry = _accountService.Get72HTransactionsFromCountry(country, lastTimeOfDay);
-                var transferOver15000 = _accountService.GetTransfersOver15000(ListOf24HTransactionsByCountry);
-                var transferOver23000 = _accountService.GetTransfersOver23000(ListOf72HTransactionsByCountry);
+                var listOf24HTransactionsByCountry = _accountService.Get24HTransactionsFromCountry(country, lastTimeOfDay);
+                var listOf72HTransactionsByCountry = _accountService.Get72HTransactionsFromCountry(country, lastTimeOfDay);
+                var transferOver15000 = _accountService.GetTransfersOver15000(listOf24HTransactionsByCountry);
+                var transferOver23000 = _accountService.GetTransfersOver23000(listOf72HTransactionsByCountry);
 
                 File.AppendAllText(filePath, Environment.NewLine + Environment.NewLine + "Single transfers over 15000:");
                 foreach (var transaction in transferOver15000)
