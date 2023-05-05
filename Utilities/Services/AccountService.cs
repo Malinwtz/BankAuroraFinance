@@ -270,21 +270,38 @@ public class AccountService : IAccountService
         return customer;
     }
 
-    public List<Transaction> Get24HTransactionsFromCountry(string country)
+    public List<Transaction> Get24HTransactionsFromCountry(string country, DateTime lastTimeOfDay)
     {
-        var transactionList = _dbContext.Dispositions
-            .Include(d => d.Customer)
-            .Where(c => c.Customer.Country == country)
-            .SelectMany(a => a.Account.Transactions)
-            .Where(d=>d.Date >= DateTime.Now.AddDays(-1))
-            .OrderByDescending(t => t.TransactionId)
-            .AsNoTracking()
-            .ToList();
+        var transactionList = new List<Transaction>();
+
+        if(lastTimeOfDay == DateTime.MinValue)
+        {
+            transactionList = _dbContext.Dispositions
+                    .Include(d => d.Customer)
+                    .Where(c => c.Customer.Country == country)
+                    .SelectMany(a => a.Account.Transactions)
+                    .Where(d=>d.Date >= DateTime.Now.AddDays(-1))
+                    .OrderByDescending(t => t.TransactionId)
+                    .AsNoTracking()
+                    .ToList();
+        }
+        else
+        {
+            transactionList = _dbContext.Dispositions
+               .Include(d => d.Customer)
+               .Where(c => c.Customer.Country == country)
+               .SelectMany(a => a.Account.Transactions)
+               .Where(d => d.Date >= lastTimeOfDay)
+               .OrderByDescending(t => t.TransactionId)
+               .AsNoTracking()
+               .ToList();
+        }
+     
 
         return transactionList;
     }
 
-    public List<Transaction> Get72HTransactionsFromCountry(string country)
+    public List<Transaction> Get72HTransactionsFromCountry(string country, DateTime lastTimeOfDay)
     {
         var transactionList = _dbContext.Dispositions
            .Include(d => d.Customer)

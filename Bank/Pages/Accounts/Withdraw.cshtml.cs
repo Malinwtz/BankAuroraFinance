@@ -46,7 +46,7 @@ namespace Bank.Pages.Accounts
         {
             Balance = _accountService.GetAccount(accountId).Balance;
             Acc = _accountService.GetAccount(accountId).AccountId;
-            TransactionDate = DateTime.UtcNow.AddHours(1);
+            TransactionDate = DateTime.Now.AddHours(1);
         }
 
         public IActionResult OnPost(int accountId)

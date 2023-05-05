@@ -1,13 +1,9 @@
 
-Latest 24 hours transfers over 15000
-Latest 72 hours accounts with total transfers over 23000
-09:07:07.6993277
-   Latest 24 hour transfers over 15000:
-   Latest 72 hour transfers with total/account over 23000:
-09:13:01.4219687
-Latest 24 hour transfers over 15000:
-Latest 72 hour transfers with total/account over 23000:
-09:14:22.0076929
-Latest 24 hour transfers over 15000:
-Latest 72 hour transfers with total/account over 23000:
-Time of day: 09:15:54.1357981
+Single transfers over 15000:
+Transfers (total sum of transfers/account) over 23000:
+Time of day: 
+14:29:48.6999100
+Single transfers over 15000:
+Transfers (total sum of transfers/account) over 23000:
+Time of day: 
+14:32:03.6298614

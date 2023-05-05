@@ -1,29 +1,17 @@
 
-Latest 24 hours transfers over 15000
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Latest 72 hours accounts with total transfers over 23000
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-09:07:07.6314137
-   Latest 24 hour transfers over 15000:
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-   Latest 72 hour transfers with total/account over 23000:
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-09:13:01.3581670
-Latest 24 hour transfers over 15000:
+Single transfers over 15000:
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Latest 72 hour transfers with total/account over 23000:
+Transfers (total sum of transfers/account) over 23000:
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-09:14:21.9524020
-Latest 24 hour transfers over 15000:
+Time of day: 
+14:29:48.6695551
+Single transfers over 15000:
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Latest 72 hour transfers with total/account over 23000:
+Transfers (total sum of transfers/account) over 23000:
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
    Customer: 4, Account: 3, Transaction: 1061156, Amount: 25000,00
-Time of day: 09:15:54.0700791
+Time of day: 
+14:32:03.5982496

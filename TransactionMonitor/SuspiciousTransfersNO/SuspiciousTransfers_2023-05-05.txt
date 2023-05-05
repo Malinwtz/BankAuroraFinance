@@ -1,28 +1,6 @@
 
-Latest 24 hours transfers over 15000
-Latest 72 hours accounts with total transfers over 23000
-Customer: 1, Account: 1, Transaction: 1061155, Amount: 10000,00
-Customer: 1, Account: 1, Transaction: 1061154, Amount: 5000,00
-Customer: 1, Account: 1, Transaction: 1061153, Amount: 5000,00
-Customer: 1, Account: 1, Transaction: 1061152, Amount: 5000,00
-Customer: 1, Account: 1, Transaction: 1061151, Amount: 1000,00
-Customer: 1, Account: 1, Transaction: 1061150, Amount: 1000,00
-Customer: 1, Account: 1, Transaction: 1061149, Amount: 1000,00
-Customer: 1, Account: 1, Transaction: 1061148, Amount: 1000,00
-09:07:07.4740970
-   Latest 24 hour transfers over 15000:
-   Latest 72 hour transfers with total/account over 23000:
-Customer: 1, Account: 1, Transaction: 1061155, Amount: 10000,00
-Customer: 1, Account: 1, Transaction: 1061154, Amount: 5000,00
-Customer: 1, Account: 1, Transaction: 1061153, Amount: 5000,00
-Customer: 1, Account: 1, Transaction: 1061152, Amount: 5000,00
-Customer: 1, Account: 1, Transaction: 1061151, Amount: 1000,00
-Customer: 1, Account: 1, Transaction: 1061150, Amount: 1000,00
-Customer: 1, Account: 1, Transaction: 1061149, Amount: 1000,00
-Customer: 1, Account: 1, Transaction: 1061148, Amount: 1000,00
-09:13:01.2102064
-Latest 24 hour transfers over 15000:
-Latest 72 hour transfers with total/account over 23000:
+Single transfers over 15000:
+Transfers (total sum of transfers/account) over 23000:
    Customer: 1, Account: 1, Transaction: 1061155, Amount: 10000,00
    Customer: 1, Account: 1, Transaction: 1061154, Amount: 5000,00
    Customer: 1, Account: 1, Transaction: 1061153, Amount: 5000,00
@@ -31,9 +9,10 @@ Latest 72 hour transfers with total/account over 23000:
    Customer: 1, Account: 1, Transaction: 1061150, Amount: 1000,00
    Customer: 1, Account: 1, Transaction: 1061149, Amount: 1000,00
    Customer: 1, Account: 1, Transaction: 1061148, Amount: 1000,00
-09:14:21.8047404
-Latest 24 hour transfers over 15000:
-Latest 72 hour transfers with total/account over 23000:
+Time of day: 
+14:29:48.6071467
+Single transfers over 15000:
+Transfers (total sum of transfers/account) over 23000:
    Customer: 1, Account: 1, Transaction: 1061155, Amount: 10000,00
    Customer: 1, Account: 1, Transaction: 1061154, Amount: 5000,00
    Customer: 1, Account: 1, Transaction: 1061153, Amount: 5000,00
@@ -42,4 +21,5 @@ Latest 72 hour transfers with total/account over 23000:
    Customer: 1, Account: 1, Transaction: 1061150, Amount: 1000,00
    Customer: 1, Account: 1, Transaction: 1061149, Amount: 1000,00
    Customer: 1, Account: 1, Transaction: 1061148, Amount: 1000,00
-Time of day: 09:15:53.9144189
+Time of day: 
+14:32:03.5405942

@@ -38,7 +38,7 @@ namespace Bank.Pages.Accounts
 
         public void OnGet(int accountId)
         {
-            TransactionDate = DateTime.UtcNow.AddHours(1);  
+            TransactionDate = DateTime.Now.AddHours(1);  
         }
 
 
