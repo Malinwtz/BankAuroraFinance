@@ -23,7 +23,6 @@ public class AccountService : IAccountService
     public PagedResult<Account> GetSortedAccountsFromDatabase(
        string sortColumn, string sortOrder, int pageNo, string q)
     {
-        //gör först en query med rätt sortering utifrån vad användaren valt
         var query = _dbContext.Accounts.AsQueryable();
 
         if (!string.IsNullOrEmpty(q))

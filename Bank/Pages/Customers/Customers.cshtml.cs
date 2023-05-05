@@ -4,9 +4,8 @@ using Utilities.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Authorization;
 
-namespace Bank.Pages
+namespace Bank.Pages.Customers
 {
-
     [Authorize(Roles = "Cashier")]
     public class CustomersModel : PageModel
     {
@@ -16,6 +15,7 @@ namespace Bank.Pages
             _customerService = customerService;
         }
         private readonly ICustomerService _customerService;
+
         public string Country { get; set; }
         public int CurrentPage { get; set; }
         public string SortOrder { get; set; }
@@ -31,11 +31,9 @@ namespace Bank.Pages
           int pageNo, string q)
         {           
             Q = q;
-
             LastPage = _customerService.GetLastPageNo();
 
-            if (pageNo == 0)
-                pageNo = 1;
+            if (pageNo == 0) pageNo = 1;
             CurrentPage = pageNo;
 
             SortColumn = sortColumn;

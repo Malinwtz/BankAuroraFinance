@@ -38,21 +38,15 @@ namespace Bank.Pages.Accounts
             Q = q;
             LastPage = _accountService.GetLastPageNo();
 
-            if (pageNo == 0)
-                pageNo = 1;
+            if (pageNo == 0) pageNo = 1;
             CurrentPage = pageNo;
 
             SortColumn = sortColumn;
             SortOrder = sortOrder;
             Country = country;
-
-            //flytta in i servicen 
-            //hämta alla accounts
+                        
             var result = _accountService.GetSortedAccountsFromDatabase(
                 sortColumn, sortOrder, pageNo, q);
-
-
-
             //Accounts = result.Results
             //    .Select(a => new AccountViewModel
             //    {
@@ -60,10 +54,8 @@ namespace Bank.Pages.Accounts
             //        Balance = a.Balance,
             //        Frequency = a.Frequency,
             //        Created = a.Created
-
             //    }).ToList();
             Accounts = result.Results.Select(_mapper.Map<Account, AccountViewModel>).ToList();
-
             // Use AutoMapper to map the results to view models
             //Accounts = _mapper.Map<List<AccountViewModel>>(result.Results);
 

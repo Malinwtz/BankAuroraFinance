@@ -22,9 +22,7 @@ public class CustomerService : ICustomerService
     public PagedResult<Customer> GetSortedCustomersFromDatabase(
         string sortColumn, string sortOrder, int pageNo, string q)
     {
-        //gör först en query med rätt sortering utifrån vad användaren valt
         var query = _dbContext.Customers.AsQueryable();
-
 
         if (!string.IsNullOrEmpty(q))
         {
@@ -63,36 +61,19 @@ public class CustomerService : ICustomerService
             else if (sortOrder == "desc")
                 query = query.OrderByDescending(d => d.Streetaddress);
 
-        //spara variablerna i en ny viewModel och
-        //spara alla viewmodels till lista
-
-        //var customers = query
-        //    .Select(s => new CustomerViewModel
-        //{
-        //    CustomerId = s.CustomerId,
-        //    Country = s.Country,
-        //    City = s.City,
-        //    Givenname = s.Givenname,
-        //    Surname = s.Surname,
-        //    Streetaddress = s.Streetaddress
-
-        //}); //to list för måste spara i en lista
-
         return query.GetPaged(pageNo, 100);
     }
 
     public int GetLastPageNo()
     {
         int lastPageNo = _dbContext.Customers.Count() / 100;
-
         return lastPageNo;
     }
 
     public void SaveNew(Customer customer)
     {
         _dbContext.Customers.Add(customer);
-        _dbContext.SaveChanges();
-        
+        _dbContext.SaveChanges();        
     }
 
 
