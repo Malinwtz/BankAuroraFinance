@@ -55,12 +55,6 @@ public class CustomerService : ICustomerService
             else if (sortOrder == "desc")
                 query = query.OrderByDescending(d => d.Country);
 
-        if (sortColumn == "Address")
-            if (sortOrder == "asc")
-                query = query.OrderBy(a => a.Streetaddress);
-            else if (sortOrder == "desc")
-                query = query.OrderByDescending(d => d.Streetaddress);
-
         return query.GetPaged(pageNo, 100);
     }
 
