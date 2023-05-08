@@ -60,7 +60,7 @@ public class CustomerService : ICustomerService
 
     public int GetLastPageNo()
     {
-        int lastPageNo = _dbContext.Customers.Count() / 100;
+        int lastPageNo = (_dbContext.Customers.Count() / 100) + 1;
         return lastPageNo;
     }
 

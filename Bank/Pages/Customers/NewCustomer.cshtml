@@ -8,26 +8,22 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 
-<!-- Masthead-->
-<header class="masthead pt-5 bg-black">
-    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
-        <div class="justify-content-center pt-200">
 
-            <div class="text-center">
+<section class="signup-section" id="signup">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 d-flex justify-content-center">
 
-                <div class="card">
-                    <div class="card-header bg-dark">
-                        <h1>Add new Customer</h1>
+            <div class="card w-75">
+
+                <div class="card-header mt-2 text-center">
+                    <h1>@ViewData["Title"]</h1>
+                </div>
+                <div class="card-body">
+
+                    <div class="mb-3 mt-1">
+                        <partial name="_BackPartial" />
                     </div>
 
-                    <div class="d-flex justify-content-center">
-                        <div class="m-3">
-                            <a asp-page="/Customers/Customers"
-                               class="btn btn-sm btn-secondary">
-                                Back
-                            </a>
-                        </div>
-                    </div>
 
                     <div class="card-body">
                         <form method="post">
@@ -37,15 +33,15 @@
                                 <select class="form-control"
                                         asp-for="Gender"
                                         asp-items="@Model.Genders">
-                                        <option value="">-- Select gender --</option>
+                                    <option value="">-- Select gender --</option>
                                 </select>
                                 <span asp-validation-for="Gender" class="text-danger"></span>
-                            </div>                                                   
+                            </div>
 
                             <div class="form-group">
                                 <label asp-for="Givenname">First name</label>
                                 <input class="form-control"
-                                       placeholder="Insert first name here" 
+                                       placeholder="Insert first name here"
                                        asp-for="Givenname">
                                 <span asp-validation-for="Givenname"
                                       class="text-danger"></span>
@@ -54,7 +50,7 @@
                             <div class="form-group">
                                 <label asp-for="Surname">Last name</label>
                                 <input class="form-control"
-                                       placeholder="Insert last name here" 
+                                       placeholder="Insert last name here"
                                        asp-for="Surname">
                                 <span asp-validation-for="Surname"
                                       class="text-danger"></span>
@@ -62,7 +58,7 @@
                             <div class="form-group">
                                 <label asp-for="Streetaddress">Street address</label>
                                 <input class="form-control"
-                                       placeholder="Insert street address here" 
+                                       placeholder="Insert street address here"
                                        asp-for="Streetaddress">
                                 <span asp-validation-for="Streetaddress"
                                       class="text-danger"></span>
@@ -70,7 +66,7 @@
                             <div class="form-group">
                                 <label asp-for="Zipcode">Zip code</label>
                                 <input class="form-control"
-                                       placeholder="Insert zip code here" 
+                                       placeholder="Insert zip code here"
                                        asp-for="Zipcode">
                                 <span asp-validation-for="Zipcode"
                                       class="text-danger"></span>
@@ -78,7 +74,7 @@
                             <div class="form-group">
                                 <label asp-for="City">City</label>
                                 <input class="form-control"
-                                       placeholder="Insert city here" 
+                                       placeholder="Insert city here"
                                        asp-for="City">
                                 <span asp-validation-for="City"
                                       class="text-danger"></span>
@@ -90,7 +86,7 @@
                                         asp-for="Country"
                                         asp-items="@Model.Countries"
                                         onchange="updateTelephoneCountryCode(this.value)">
-                                        <option value="">-- Select country --</option>
+                                    <option value="">-- Select country --</option>
                                 </select>
                                 <span asp-validation-for="Country" class="text-danger"></span>
                             </div>
@@ -108,16 +104,16 @@
                             <div class="form-group">
                                 <label asp-for="Birthday">Birth date</label>
                                 <input class="form-control"
-                                       placeholder="Insert birth date here" 
+                                       placeholder="Insert birth date here"
                                        asp-for="Birthday">
                                 <span asp-validation-for="Birthday"
                                       class="text-danger"></span>
                             </div>
-                       
+
                             <div class="form-group">
                                 <label asp-for="NationalId">National Id</label>
                                 <input class="form-control"
-                                       placeholder="Insert National Id here" 
+                                       placeholder="Insert National Id here"
                                        asp-for="NationalId">
                                 <span asp-validation-for="NationalId"
                                       class="text-danger"></span>
@@ -136,7 +132,7 @@
                             <div class="form-group">
                                 <label asp-for="Telephonenumber">Telephone number</label>
                                 <input class="form-control"
-                                       placeholder="Insert Telephone number here" 
+                                       placeholder="Insert Telephone number here"
                                        asp-for="Telephonenumber">
                                 <span asp-validation-for="Telephonenumber"
                                       class="text-danger"></span>
@@ -145,13 +141,16 @@
                             <div class="form-group">
                                 <label asp-for="Emailaddress">Email</label>
                                 <input class="form-control"
-                                       placeholder="Insert email here" 
+                                       placeholder="Insert email here"
                                        asp-for="Emailaddress">
                                 <span asp-validation-for="Emailaddress"
                                       class="text-danger"></span>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Save</button>
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="mt-2 btn btn-primary">Save</button>
+                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -160,7 +159,7 @@
             </div>
         </div>
     </div>
-</header>
+</section>
 
 
 @section Scripts
@@ -204,7 +203,7 @@
 
 
 @*
-    
+
 <head>
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
@@ -222,7 +221,7 @@
                     <div class="card-body">
                         <form method="post">
 
-                           
+
 
                         </form>
                     </div>

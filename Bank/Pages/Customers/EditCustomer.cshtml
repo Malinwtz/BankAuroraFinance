@@ -8,28 +8,22 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 
-<!-- Masthead-->
-<header class="masthead pt-5 bg-black">
-    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
-        <div class="justify-content-center pt-200">
+<section class="signup-section" id="signup">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 d-flex justify-content-center">
 
+            <div class="card w-75">
 
-            <div class="text-center">
+                <div class="card-header mt-2 text-center">
+                    <h1>@ViewData["Title"]</h1>
+                </div>
+                <div class="card-body">
 
-                <div class="card">
-                    <div class="card-header bg-dark">
-                        <h1>Edit Customer</h1>
-                    </div>
-
-
-                    <div class="d-flex justify-content-center">
-                        <div class="m-3">
-                            <a asp-page="/Customers/Customers"
-                               class="btn btn-sm btn-secondary">
-                                Back
-                            </a>
+                
+                        <div class="mb-3 mt-1">
+                            <partial name="_BackPartial" />
                         </div>
-                    </div>
+                
 
 
                     <div class="card-body">
@@ -156,9 +150,10 @@
                             </div>
 
 
-                          
-                                <button type="submit" class="btn btn-primary">Save</button>
-                         
+                          <div class="d-flex justify-content-center">
+                                <button type="submit" class="mt-2 btn btn-primary">Save</button>
+                            </div>
+
 
                         </form>
                     </div>

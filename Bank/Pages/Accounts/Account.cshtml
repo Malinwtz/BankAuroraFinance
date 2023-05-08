@@ -12,60 +12,66 @@
 <section class="signup-section" id="signup">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5">
-            <div class="col-md-10 col-lg-8 mx-auto text-center">
 
-                <h1 class="display-4 pt-5">Account No @Model.SingleAccount.AccountId</h1>
+            <div class="card d-flex justify-content-center">
 
-                <div class="d-flex justify-content-center">
-                    <div class="m-3">
-                        <a asp-page="/Accounts/Accounts"
-                           class="btn btn-sm btn-secondary">
-                            Back
-                        </a>
-                    </div>
+                <div class="card-header mt-2 text-center">
+                    <h1>Account No @Model.SingleAccount.AccountId</h1>
                 </div>
 
-                <table class="table table-striped table-dark">
-                    <tbody>
-                        <tr>
-                            <th scope="col">Id</th>
-                            <td>@Model.SingleAccount.AccountId</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Balance @Model.Today</th>
-                            <td>@Model.SingleAccount.Balance</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Frequency</th>
-                            <td>@Model.SingleAccount.Frequency</td>
-                        </tr>
-                        <tr>
-                            <th scope="col">Created</th>
-                            <td>@Model.SingleAccount.Created</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="card-body">                  
+                      
+                    <div class="mb-3 mt-1">
+                        <partial name="_BackPartial" />
+                    </div>
 
 
-                @*Transactions table*@
-                <table class="table table-striped table-dark" id="posts-table">
-                    <thead>
-                        <tr>
-                            <th colspan="5"><h3>Transactions</h3></th>
-                        </tr>
-                        <tr>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Balance</th>
-                            <th scope="col">Date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                <a class="btn btn-secondary" href="javascript:showMore();">Show More</a>
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <td>@Model.SingleAccount.AccountId</td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Balance @Model.Today</th>
+                                <td>@Model.SingleAccount.Balance</td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Frequency</th>
+                                <td>@Model.SingleAccount.Frequency</td>
+                            </tr>
+                            <tr>
+                                <th scope="col">Created</th>
+                                <td>@Model.SingleAccount.Created</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
+
+                    @*Transactions table*@
+                    <table class="table table-striped" id="posts-table">
+                        <thead>
+                            <tr>
+                                <th colspan="5"><h3>Transactions</h3></th>
+                            </tr>
+                            <tr>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Balance</th>
+                                <th scope="col">Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <div class="d-flex justify-content-between">
+                        <partial name="_BackPartial" />
+                        <a class="btn btn-secondary" href="javascript:showMore();">Show More</a>
+                    </div>                 
+
+
+                </div>
 
             </div>
         </div>
@@ -95,16 +101,14 @@
             console.log('Element:', element); //kollar om den får sina element
             document.querySelector('#posts-table tbody').innerHTML +=
                 `<tr>
-                            <td>${element.amount}</td>
-                            <td>${element.type}</td>
-                            <td>${element.balance}</td>
-                            <td>${element.date.substring(0, 10)}</td>
-                            <td>
-                                <a class="btn btn-primary" onclick="fetchEvaluation(${element.transactionId}, this)">
-                                    Show Value
-                                </a>
-                            </td>
-                        </tr>`;
+                                    <td>${element.amount}</td>
+                                    <td>${element.type}</td>
+                                    <td>${element.balance}</td>
+                                    <td>${element.date.substring(0, 10)}</td>
+                                    <td>
+                                   
+                                    </td>
+                                </tr>`;
         }
     </script>
 }

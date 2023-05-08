@@ -8,26 +8,26 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 
-<!-- Masthead-->
-<header class="masthead pt-5 bg-black">
-    <div class="container px-4 d-flex h-auto align-items-center justify-content-center">
-        <div class="justify-content-center pt-200">
 
-            <div class="text-center">
-                <div class="card mt-5">
+<section class="signup-section" id="signup">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 d-flex justify-content-center">
 
-                    <div class="card-header bg-dark">
-                        <h1>Transaction</h1>
+            <div class="card w-75">
+
+                <div class="card-header mt-2 text-center">
+                    <h1>@ViewData["Title"]</h1>
+                </div>
+                <div class="card-body">
+
+                    <div class="mb-3 mt-1">
+                        <partial name="_BackPartial" />
                     </div>
 
 
-                    <div class="d-flex justify-content-center">
-                        <div class="m-3">
-                            <a asp-page="/Accounts/Accounts"
-                               class="btn btn-sm btn-secondary">
-                                Back
-                            </a>
-                        </div>
+                    <div class="text-center">
+                        <h4>Transfer from account No: @Model.FromAccount</h4>
+                        <h5>Balance: @Model.Balance</h5>
                     </div>
 
 
@@ -35,24 +35,20 @@
 
                         <form method="post">
 
-                            <h4>Transfer from account No: @Model.FromAccount</h4>
-                            <h5>Balance: @Model.Balance</h5>
 
                             <div class="form-group">
                                 <label asp-for="ToAccount">Receiving Account</label>
-                                <input 
-                                    asp-for="ToAccount"  
-                                    class="form-control" />
-                                <span 
-                                    asp-validation-for="ToAccount" 
-                                    class="text-danger">
+                                <input asp-for="ToAccount"
+                                       class="form-control" />
+                                <span asp-validation-for="ToAccount"
+                                      class="text-danger">
                                 </span>
                             </div>
 
                             <div class="form-group">
                                 <label asp-for="Amount">Amount</label>
-                                <input class="form-control" 
-                                    asp-for="Amount" />
+                                <input class="form-control"
+                                       asp-for="Amount" />
                                 <span class="text-danger"
                                       asp-validation-for="Amount">
                                 </span>
@@ -60,12 +56,10 @@
 
                             <div class="form-group">
                                 <label asp-for="TransactionDate">Date</label>
-                                <input 
-                                    class="form-control" 
-                                    asp-for="TransactionDate" />
-                                <span 
-                                    class="text-danger"
-                                    asp-validation-for="TransactionDate">
+                                <input class="form-control"
+                                       asp-for="TransactionDate" />
+                                <span class="text-danger"
+                                      asp-validation-for="TransactionDate">
                                 </span>
                             </div>
 
@@ -73,15 +67,15 @@
                                 <label asp-for="Comment">Comment</label>
                                 <input asp-for="Comment"
                                        placeholder="Please insert comment here"
-                                    class="form-control" />
-                                <span 
-                                    class="text-danger"
-                                    asp-validation-for="Comment">
+                                       class="form-control" />
+                                <span class="text-danger"
+                                      asp-validation-for="Comment">
                                 </span>
                             </div>
-
-                            <button type="submit" class="btn btn-primary">Transfer</button>
-
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="mt-2 btn btn-primary">Transfer</button>
+                            </div>
+                            
                         </form>
 
                     </div>
@@ -90,10 +84,10 @@
             </div>
         </div>
     </div>
-</header>
+</section>
 
 
 @section Scripts
     {
     <partial name="_ValidationScriptsPartial" />
-}
+    }
