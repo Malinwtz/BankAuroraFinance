@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <form method="post">
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Gender">Gender</label>
                                 <select class="form-control"
                                         asp-for="Gender"
@@ -39,7 +39,7 @@
                                 <span asp-validation-for="Gender" class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Givenname">First name</label>
                                 <input class="form-control"
                                        placeholder="Insert first name here"
@@ -48,7 +48,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Surname">Last name</label>
                                 <input class="form-control"
                                        placeholder="Insert last name here"
@@ -57,7 +57,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Streetaddress">Street address</label>
                                 <input class="form-control"
                                        placeholder="Insert street address here"
@@ -65,7 +65,7 @@
                                 <span asp-validation-for="Streetaddress"
                                       class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Zipcode">Zip code</label>
                                 <input class="form-control"
                                        placeholder="Insert zip code here"
@@ -73,7 +73,7 @@
                                 <span asp-validation-for="Zipcode"
                                       class="text-danger"></span>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="City">City</label>
                                 <input class="form-control"
                                        placeholder="Insert city here"
@@ -82,7 +82,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Country">Country</label>
                                 <select class="form-control"
                                         asp-for="Country"
@@ -93,7 +93,7 @@
                                 <span asp-validation-for="Country" class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="CountryCode">Country Code</label>
                                 <input class="form-control"
                                        id="CountryCode"
@@ -103,7 +103,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Birthday">Birth date</label>
                                 <input class="form-control"
                                        placeholder="Insert birth date here"
@@ -112,7 +112,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="NationalId">National Id</label>
                                 <input class="form-control"
                                        placeholder="Insert national Id here"
@@ -121,7 +121,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Telephonecountrycode">Telephone country code</label>
                                 <input class="form-control"
                                        id="Telephonecountrycode"
@@ -131,7 +131,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Telephonenumber">Telephone number</label>
                                 <input class="form-control"
                                        placeholder="Insert telephone number here"
@@ -140,7 +140,7 @@
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Emailaddress">Email</label>
                                 <input class="form-control"
                                        placeholder="Insert email here"
@@ -149,21 +149,18 @@
                                       class="text-danger"></span>
                             </div>
 
-
-                          <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center mt-2">
                                 <button type="submit" class="mt-2 btn btn-primary">Save</button>
                             </div>
-
 
                         </form>
                     </div>
                 </div>
 
-
             </div>
         </div>
     </div>
-</header>
+</section>
 
 @section Scripts
     {

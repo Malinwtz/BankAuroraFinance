@@ -15,8 +15,8 @@ public interface IAccountService
     List<AccountViewModel> GetTopTenAccounts();
     int GetLastPageNo();
     ErrorCode ReturnErrorCode(int accountId, decimal amount, string comment, bool deposition);
-    void WithdrawOrDeposit(int accountId, decimal amount, bool deposition);
-    void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance);
+    void WithdrawOrDeposit(int accountId, decimal amount, string type);
+    void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance, string type, string operation);
     PagedResult<TransactionViewModel> GetTransactionsFromCustomerId(int customerId, int pageNum);
     PagedResult<TransactionViewModel> GetTransactionsFromAccountId(int accountId, int pageNum);
     List<Transaction> GetTransactionsOver15000();

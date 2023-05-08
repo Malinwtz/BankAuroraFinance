@@ -48,9 +48,9 @@ namespace Bank.Pages.Accounts
 
             if (ModelState.IsValid && status == ErrorCode.Ok)
             {              
-                _accountService.WithdrawOrDeposit(accountId, Amount, true);
+                _accountService.WithdrawOrDeposit(accountId, Amount, "Credit");
                 _accountService.RegisterTransaction(
-                    accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId));
+                    accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), "Credit", "Credit in Cash");
               
                 return RedirectToPage("Accounts");
             }

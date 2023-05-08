@@ -25,10 +25,10 @@
                         <partial name="_BackPartial" />
                         <div class="text-end">Page no. @Model.CurrentPage of @Model.PageCount</div>
                     </div>
-                    
-                  
+
+
                     <div class="d-flex justify-content-center">
-                       
+
 
                         <div class="m-3">
                             <a asp-page="/Customers/NewCustomer"
@@ -50,25 +50,29 @@
                             <thead>
                                 <tr>
                                     <th class="th-box" scope="col">
-                                        Id
-                                        <a asp-page="/Customers/Customers"
-                                           asp-route-q="@Model.Q"
-                                           asp-route-sortColumn="Id"
-                                           asp-route-country="@Model.Country"
-                                           asp-route-sortOrder="asc"
-                                           style="text-decoration: none">
-                                            <i class="fa-solid fa-angle-up"></i>
-                                        </a>
-                                        <a asp-page="/Customers/Customers"
-                                           asp-route-q="@Model.Q"
-                                           asp-route-sortColumn="Id"
-                                           asp-route-country="@Model.Country"
-                                           asp-route-sortOrder="desc"
-                                           style="text-decoration:none">
-                                            <i class="fa-solid fa-angle-down"></i>
-                                        </a>
+                                        <div d-flex>
+                                            Id
+                                            <a asp-page="/Customers/Customers"
+                                               asp-route-q="@Model.Q"
+                                               asp-route-sortColumn="Id"
+                                               asp-route-country="@Model.Country"
+                                               asp-route-sortOrder="asc"
+                                               style="text-decoration: none">
+                                                <i class="fa-solid fa-angle-up"></i>
+                                            </a>
+                                            <a asp-page="/Customers/Customers"
+                                               asp-route-q="@Model.Q"
+                                               asp-route-sortColumn="Id"
+                                               asp-route-country="@Model.Country"
+                                               asp-route-sortOrder="desc"
+                                               style="text-decoration:none">
+                                                <i class="fa-solid fa-angle-down"></i>
+                                            </a>
+                                        </div>
                                     </th>
                                     <th scope="col">
+                                        <div>
+
                                         Name
                                         <a asp-page="/Customers/Customers"
                                            asp-route-q="@Model.Q"
@@ -85,10 +89,13 @@
                                            asp-route-sortOrder="desc"
                                            style="text-decoration:none">
                                             <i class="fa-solid fa-angle-down"></i>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </th>
 
                                     <th scope="col">
+                                        <div>
+
                                         National Id
                                         <a asp-page="/Customers/Customers"
                                            asp-route-q="@Model.Q"
@@ -105,10 +112,13 @@
                                            asp-route-sortOrder="desc"
                                            style="text-decoration:none">
                                             <i class="fa-solid fa-angle-down"></i>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </th>
 
                                     <th scope="col">
+                                        <div>
+
                                         Country
                                         <a asp-page="/Customers/Customers"
                                            asp-route-q="@Model.Q"
@@ -125,9 +135,12 @@
                                            asp-route-sortOrder="desc"
                                            style="text-decoration:none">
                                             <i class="fa-solid fa-angle-down"></i>
-                                        </a>
+                                            </a>
+                                        </div>
                                     </th>
                                     <th class="d-none d-xl-table-cell" scope="col">
+                                        <div>
+
                                         City
                                         <a asp-page="/Customers/Customers"
                                            asp-route-q="@Model.Q"
@@ -145,8 +158,9 @@
                                            style="text-decoration:none">
                                             <i class="fa-solid fa-angle-down"></i>
                                         </a>
+                                        </div>
                                     </th>
-                                   
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -159,7 +173,7 @@
                                         <td>@c.NationalId</td>
                                         <td>@c.Country</td>
                                         <td class="d-none d-xl-table-cell">@c.City</td>
-                                        
+
                                         @*för att komma till rätt sida måste asp-route-id (id) vara samma som i customer onget-parameter *@
                                         <td><a asp-page="/Customers/Customer" asp-route-customerId="@c.CustomerId" class="btn btn-sm btn-primary">View</a></td>
 
@@ -180,7 +194,7 @@
                                             </a>
                                         }
                                     </td>
-                                    <td colspan="4">
+                                    <td colspan="3">
                                         @for (int i = 1; i <= Model.PageCount; i++)
                                         {
                                             string activeBtn = "btn-light";
@@ -220,8 +234,8 @@
                         </table>
 
                     </div>
-                    <div >
-                        <partial name="_BackPartial" />                       
+                    <div>
+                        <partial name="_BackPartial" />
                     </div>
 
                 </div>

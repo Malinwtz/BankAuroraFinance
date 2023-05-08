@@ -27,7 +27,6 @@
                         <div class="text-end">Page no. @Model.CurrentPage of @Model.PageCount</div>
                     </div>
 
-
                     @*SEARCH*@
                     <form method="get" class="m-3 text-center">
                         <input asp-for="@Model.Q" />
@@ -38,8 +37,10 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">
-                                    Id
+                                <th class="th-box" scope="col">
+                               
+                                    <div >
+                                        Id
                                     <a asp-page="/Accounts/Accounts"
                                        asp-route-q="@Model.Q"
                                        asp-route-sortColumn="Id"
@@ -56,65 +57,80 @@
                                        style="text-decoration:none">
                                         <i class="fa-solid fa-angle-down"></i>
                                     </a>
+                                    </div>
+                            
                                 </th>
-                                <th scope="col">
-                                    Balance
-                                    <a asp-page="/Accounts/Accounts"
-                                       asp-route-q="@Model.Q"
-                                       asp-route-sortColumn="Balance"
-                                       asp-route-country="@Model.Country"
-                                       asp-route-sortOrder="asc"
-                                       style="text-decoration: none">
-                                        <i class="fa-solid fa-angle-up"></i>
-                                    </a>
-                                    <a asp-page="/Accounts/Accounts"
-                                       asp-route-q="@Model.Q"
-                                       asp-route-sortColumn="Balance"
-                                       asp-route-country="@Model.Country"
-                                       asp-route-sortOrder="desc"
-                                       style="text-decoration:none">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                    </a>
+                                <th class="th-box" scope="col">
+                                    
+                                    <div>
+                                        Balance
+                                        <a asp-page="/Accounts/Accounts"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Balance"
+                                           asp-route-country="@Model.Country"
+                                           asp-route-sortOrder="asc"
+                                           style="text-decoration: none">
+                                            <i class="fa-solid fa-angle-up"></i>
+                                        </a>
+                                        <a asp-page="/Accounts/Accounts"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Balance"
+                                           asp-route-country="@Model.Country"
+                                           asp-route-sortOrder="desc"
+                                           style="text-decoration:none">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </a>
+                                    </div>
+                                  
                                 </th>
-                                <th scope="col">
-                                    Frequency
-                                    <a asp-page="/Accounts/Accounts"
-                                       asp-route-q="@Model.Q"
-                                       asp-route-sortColumn="Frequency"
-                                       asp-route-country="@Model.Country"
-                                       asp-route-sortOrder="asc"
-                                       style="text-decoration: none">
-                                        <i class="fa-solid fa-angle-up"></i>
-                                    </a>
-                                    <a asp-page="/Accounts/Accounts"
-                                       asp-route-q="@Model.Q"
-                                       asp-route-sortColumn="Frequency"
-                                       asp-route-country="@Model.Country"
-                                       asp-route-sortOrder="desc"
-                                       style="text-decoration:none">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                    </a>
+                                <th class="th-box" scope="col">
+                                    <div>
+                                        Frequency
+                                        <a asp-page="/Accounts/Accounts"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Frequency"
+                                           asp-route-country="@Model.Country"
+                                           asp-route-sortOrder="asc"
+                                           style="text-decoration: none">
+                                            <i class="fa-solid fa-angle-up"></i>
+                                        </a>
+                                        <a asp-page="/Accounts/Accounts"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Frequency"
+                                           asp-route-country="@Model.Country"
+                                           asp-route-sortOrder="desc"
+                                           style="text-decoration:none">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </a>
+                                    </div>
                                 </th>
-                                <th scope="col">
-                                    Created
-                                    <a asp-page="/Accounts/Accounts"
-                                       asp-route-q="@Model.Q"
-                                       asp-route-sortColumn="Created"
-                                       asp-route-country="@Model.Country"
-                                       asp-route-sortOrder="asc"
-                                       style="text-decoration: none">
-                                        <i class="fa-solid fa-angle-up"></i>
-                                    </a>
-                                    <a asp-page="/Accounts/Accounts"
-                                       asp-route-q="@Model.Q"
-                                       asp-route-sortColumn="Created"
-                                       asp-route-country="@Model.Country"
-                                       asp-route-sortOrder="desc"
-                                       style="text-decoration:none">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                    </a>
+                                <th class="th-box" scope="col">
+                                    
+                                    <div>
+                                        Created
+                                        <a asp-page="/Accounts/Accounts"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Created"
+                                           asp-route-country="@Model.Country"
+                                           asp-route-sortOrder="asc"
+                                           style="text-decoration: none">
+                                            <i class="fa-solid fa-angle-up"></i>
+                                        </a>
+                                        <a asp-page="/Accounts/Accounts"
+                                           asp-route-q="@Model.Q"
+                                           asp-route-sortColumn="Created"
+                                           asp-route-country="@Model.Country"
+                                           asp-route-sortOrder="desc"
+                                           style="text-decoration:none">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                        </a>
+                                    </div>
                                 </th>
-                                <th>Transfer</th>
+                                <th>
+                                    <div>
+                                        Transfer
+                                    </div>
+                                </th>
 
                                 <th> </th>
                             </tr>
@@ -129,7 +145,7 @@
                                     <td>@a.Frequency</td>
                                     <td>@a.Created.ToShortDateString()</td>
 
-                                    <td>
+                                    <td d-md-flex flex-column >
                                         <a class="m-2" asp-page="/Accounts/Withdraw"
                                        asp-route-accountId="@a.AccountId">
                                             <i class="fa-regular fa-square-minus"></i>

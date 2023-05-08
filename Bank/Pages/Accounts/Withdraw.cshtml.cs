@@ -55,9 +55,9 @@ namespace Bank.Pages.Accounts
 
             if (ModelState.IsValid && status == ErrorCode.Ok)
             {
-                _accountService.WithdrawOrDeposit(accountId, Amount, false);
+                _accountService.WithdrawOrDeposit(accountId, Amount, "Debit");
                 _accountService.RegisterTransaction(
-                    accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId));
+                    accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), "Debit", "Withdrawal in Cash" );
 
                 return RedirectToPage("Accounts");
 

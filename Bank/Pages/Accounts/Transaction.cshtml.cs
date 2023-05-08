@@ -63,10 +63,12 @@ namespace Bank.Pages.Accounts
             {
                 if (status == ErrorCode.Ok)
                 {
-                    _accountService.WithdrawOrDeposit(accountId, Amount, false);
-                    _accountService.WithdrawOrDeposit(ToAccount, Amount, true);
-                    _accountService.RegisterTransaction(accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId));
-                    _accountService.RegisterTransaction(ToAccount, TransactionDate, Amount, _accountService.GetAccountBalance(ToAccount));
+                    _accountService.WithdrawOrDeposit(accountId, Amount, "Debit");
+                    _accountService.WithdrawOrDeposit(ToAccount, Amount, "Credit");
+                    _accountService.RegisterTransaction(accountId, TransactionDate, Amount, 
+                        _accountService.GetAccountBalance(accountId), "Debit", "Withdrawal in Cash");
+                    _accountService.RegisterTransaction(ToAccount, TransactionDate, Amount,
+                        _accountService.GetAccountBalance(ToAccount), "Credit", "Credit in Cash");
                 
                     return RedirectToPage("Accounts");
                 }

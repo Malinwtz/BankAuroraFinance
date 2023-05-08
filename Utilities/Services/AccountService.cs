@@ -111,12 +111,12 @@ public class AccountService : IAccountService
         return _dbContext.Accounts.First(a => a.AccountId == accountId).Balance;
     }
 
-    public void WithdrawOrDeposit(int accountId, decimal amount, bool deposition)
+    public void WithdrawOrDeposit(int accountId, decimal amount, string type)
     {
         var accountDb = _dbContext.Accounts
                 .First(a => a.AccountId == accountId);
 
-        if (deposition == true)
+        if (type == "Credit")
         {
             accountDb.Balance += amount;
         }
@@ -159,8 +159,11 @@ public class AccountService : IAccountService
         return ErrorCode.Ok;
     }
 
-    public void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance)
+    public void RegisterTransaction(int accountId, DateTime date, decimal amount, 
+        decimal balance, string type, string operation)
     {
+        if (type == "Debit") amount -= (amount * 2);
+
         _dbContext.Transactions.Add(
             new Transaction
             {
@@ -168,8 +171,8 @@ public class AccountService : IAccountService
                 Date = date,
                 Amount = amount,
                 Balance = balance,
-                Type = "Credit",
-                Operation = "Credit in Cash"
+                Type = type,
+                Operation = operation
             });
 
         var account = _dbContext.Accounts.First(a => a.AccountId == accountId);

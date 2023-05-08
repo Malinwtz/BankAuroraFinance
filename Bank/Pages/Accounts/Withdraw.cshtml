@@ -35,7 +35,7 @@
 
                         <form method="post">
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Amount">Amount</label>
                                 <input class="form-control" asp-for="Amount" />
                                 <span class="text-danger"
@@ -43,7 +43,7 @@
                                 </span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="TransactionDate">Date</label>
                                 <input class="form-control" asp-for="TransactionDate" />
                                 <span class="text-danger"
@@ -51,7 +51,7 @@
                                 </span>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group mb-2">
                                 <label asp-for="Comment">Comment</label>
                                 <input class="form-control"
                                        placeholder="Please insert comment here"
@@ -60,7 +60,7 @@
                                       asp-validation-for="Comment">
                                 </span>
                             </div>
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center mt-2">
                                 <button type="submit" class="mt-2 btn btn-primary">Withdraw</button>
                             </div>
 
