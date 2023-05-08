@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Utilities.Infrastructure.Paging;
 using Utilities.Models;
 using Utilities.Services.Interfaces;
@@ -9,70 +10,74 @@ namespace Utilities.Services
 {
     public class UserService : IUserService
     {
-        private readonly UserManager<IdentityUser> _userManager;
 
-        public UserService(BankAppDataContext dbContext, UserManager<IdentityUser> userManager)
+        public UserService(UserManager<IdentityUser> userManager)
         {
-            _dbContext = dbContext;
             _userManager = userManager;
         }
 
-        public BankAppDataContext _dbContext { get; }
+        private readonly UserManager<IdentityUser> _userManager;
 
         public int GetTotalAmountOfUsers()
         {
-            var totalUsers = _dbContext.Users.Count();
+            var totalUsers = _userManager.Users.Count();
 
             return totalUsers;
         }
 
-        public PagedResult<User> GetSortedUsersFromDatabase(
-       string sortColumn, string sortOrder, int pageNo, string q)
+        public List<IdentityUser> GetSortedUsersFromDatabase(
+       string sortColumn, string sortOrder, string q)
         {
-            //gör först en query med rätt sortering utifrån vad användaren valt
-            var query = _dbContext.Users.AsQueryable();
+            var query = _userManager.Users.AsQueryable();
 
 
             if (!string.IsNullOrEmpty(q))
             {
                 query = query
-                    .Where(c => c.LoginName.Contains(q) || c.FirstName.Contains(q)
-                    || c.LastName.Contains(q) || c.UserId.ToString().Contains(q));
+                    .Where(c => c.UserName.Contains(q) || c.Email.Contains(q)
+                    || c.Id.Contains(q));
             }
 
             if (sortColumn == "Name")
                 if (sortOrder == "asc")
-                    query = query.OrderBy(o => o.LoginName);
+                    query = query.OrderBy(o => o.UserName);
                 else if (sortOrder == "desc")
-                    query = query.OrderByDescending(o => o.LoginName);
+                    query = query.OrderByDescending(o => o.UserName);
 
             if (sortColumn == "Name")
                 if (sortOrder == "asc")
-                    query = query.OrderBy(o => o.FirstName);
+                    query = query.OrderBy(o => o.Email);
                 else if (sortOrder == "desc")
-                    query = query.OrderByDescending(o => o.FirstName);
+                    query = query.OrderByDescending(o => o.Email);
 
             if (sortColumn == "Id")
                 if (sortOrder == "asc")
-                    query = query.OrderBy(a => a.UserId);
+                    query = query.OrderBy(a => a.Id);
                 else if (sortOrder == "desc")
-                    query = query.OrderByDescending(d => d.UserId);
+                    query = query.OrderByDescending(d => d.Id);
 
-            return query.GetPaged(pageNo, 50);
+            return query.ToList();
         }
 
-        public List<UserViewModel> GetUserViewModels(PagedResult<User> users)
+
+        public List<UserViewModel> GetUserViewModels(List<IdentityUser> users)
         {
-            var userVMs = users.Results
+            var userVMs = users
                     .Select(s => new UserViewModel
                     {
-                        UserId = s.UserId,
-                        FirstName = s.FirstName,
-                        LastName = s.LastName,
+                        Id = s.Id,
+                        UserName = s.UserName,
+                        Email = s.Email
 
                     }).ToList();
 
             return userVMs;
+        }
+
+        public void AddUser(IdentityUser user)
+        {
+        //    _userManager.Users..Add(user);
+        //    _userManager.SaveChanges();
         }
     }
 }

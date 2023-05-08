@@ -28,26 +28,18 @@ namespace Bank.Pages.Users
         public string Q { get; set; }
         public int PageCount { get; set; }
 
-        public void OnGet(string sortColumn, string sortOrder,
-          int pageNo, string q)
+        public void OnGet(string sortColumn, string sortOrder, string q)
         {
             Q = q;
          
             TotalUsers = _userService.GetTotalAmountOfUsers();
-
-            if (pageNo == 0)
-                pageNo = 1;
-            CurrentPage = pageNo;
-
+       
             SortColumn = sortColumn;
             SortOrder = sortOrder;
 
-            var result = _userService.GetSortedUsersFromDatabase(sortColumn, sortOrder, pageNo, q);
+            var result = _userService.GetSortedUsersFromDatabase(sortColumn, sortOrder, q);
 
             Users = _userService.GetUserViewModels(result);
-
-            PageCount = result.PageCount;
-
         }
     }
 }

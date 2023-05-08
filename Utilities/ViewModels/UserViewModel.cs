@@ -8,10 +8,9 @@ namespace Utilities.ViewModels
 {
     public class UserViewModel
     {
-        public int UserId { get; set; }
-        public string LoginName { get; set; } = null!;
-        public byte[] PasswordHash { get; set; } = null!;
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+        public string Id { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+      
     }
 }

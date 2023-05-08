@@ -4,19 +4,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Utilities.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Bank.Pages.Users
 {
     [Authorize(Roles = "Admin")]
     public class CreateUserModel : PageModel
     {
-        public CreateUserModel(BankAppDataContext dbContext)
+        
+        public CreateUserModel(UserManager<IdentityUser> userManager)
         {
-            _dbContext = dbContext;
+            _userManager = userManager;
         }
-
-
-        public BankAppDataContext _dbContext { get; }
+        private readonly UserManager<IdentityUser> _userManager;
 
 
         [BindProperty]
@@ -38,8 +38,7 @@ namespace Bank.Pages.Users
                 LastName = CreateUserRequest.LastName
             };
 
-            _dbContext.Users.Add(dbUser);
-            _dbContext.SaveChanges();
+          
 
             ViewData["Message"] = "User created!";
         }
