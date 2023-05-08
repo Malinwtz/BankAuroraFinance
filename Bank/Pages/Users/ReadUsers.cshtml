@@ -22,22 +22,18 @@
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-center">
-                        <div class="m-3">
-                            <a asp-page="/Index"
-                               class="btn btn-sm btn-secondary">
-                                Back
-                            </a>
+               
+                        <div class="mb-3 mt-1">
+                            <partial name="_BackPartial" />
                         </div>
 
-                        <div class="m-3">
+                        <div class="m-3 d-flex justify-content-center">
                             <a asp-page="/Users/CreateUser"
                                class="btn btn-sm btn-primary">
                                 Add
                             </a>
                         </div>
-                    </div>
-
+                  
 
                     @if (Model.Users != null && Model.Users.Any())
                     {
