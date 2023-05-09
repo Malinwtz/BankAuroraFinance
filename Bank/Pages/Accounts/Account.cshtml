@@ -27,19 +27,16 @@
                                 <a class="m-2" asp-page="/Accounts/Withdraw"
                                    asp-route-accountId="@Model.SingleAccount.AccountId">
                                     <i class="fa-regular fa-square-minus"></i>
-                                    Withdraw
                                 </a>
 
                                 <a class="m-2" asp-page="/Accounts/Deposit"
                                    asp-route-accountId="@Model.SingleAccount.AccountId">
                                     <i class="fa-regular fa-square-plus"></i>
-                                    Deposit
                                 </a>
 
                                 <a class="m-2" asp-page="/Accounts/Transaction"
                                    asp-route-accountId="@Model.SingleAccount.AccountId">
                                     <i class="fa-solid fa-plus-minus"></i>
-                                    Transfer
                                 </a> 
                         </div>
                     </div>
@@ -53,7 +50,7 @@
                             </tr>
                             <tr>
                                 <th scope="col">Balance @Model.Today</th>
-                                <td>@Model.SingleAccount.Balance.ToString("N2")</td>
+                                <td>@Model.SingleAccount.Balance</td>
                             </tr>
                             <tr>
                                 <th scope="col">Frequency</th>
@@ -61,7 +58,7 @@
                             </tr>
                             <tr>
                                 <th scope="col">Created</th>
-                                <td>@Model.SingleAccount.Created.ToShortDateString()</td>
+                                <td>@Model.SingleAccount.Created</td>
                             </tr>
                         </tbody>
                     </table>

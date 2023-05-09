@@ -186,7 +186,7 @@ public class AccountService : IAccountService
         var transactions = _dbContext.Transactions
                .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
                .Where(a => a.AccountNavigation.Dispositions.Any(d => d.CustomerId == customerId))
-               .OrderByDescending(d => d.Date).ThenByDescending(d => d.TransactionId)
+               .OrderByDescending(d => d.Date)
                //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda 
                .Select(s => new TransactionViewModel
                {
@@ -205,7 +205,7 @@ public class AccountService : IAccountService
         var transactions = _dbContext.Transactions
                .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
                .Where(a => a.AccountNavigation.Dispositions.Any(d => d.AccountId == accountId))
-               .OrderByDescending(d => d.Date).ThenByDescending(d => d.TransactionId)
+               .OrderByDescending(d => d.Date)
                //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda 
                .Select(s => new TransactionViewModel
                {
