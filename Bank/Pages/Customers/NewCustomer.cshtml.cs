@@ -69,7 +69,9 @@ namespace Bank.Pages.Customers
 
 
         //[Required(ErrorMessage = "Birthday is required")]
-        public DateTime Birthday { get; set; }
+        //[DisplayFormat(DataFormatString = "yyyy-MM-dd", ApplyFormatInEditMode = true,
+        //    ConvertEmptyStringToNull = true, NullDisplayText = "")]
+        public DateTime Birthday { get; set; } = DateTime.Now;
 
 
         [Required(ErrorMessage = "Country code is required")]
