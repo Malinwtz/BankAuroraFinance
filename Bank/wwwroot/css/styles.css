@@ -4156,7 +4156,7 @@ textarea.form-control-lg {
     cursor: default;
     text-decoration: none;
     pointer-events: none;
-       
+    color: rgba(0, 0, 0, 0.55);
 }
 .nav-item.no-hover:hover {
     cursor: default;
