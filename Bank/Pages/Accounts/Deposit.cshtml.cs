@@ -55,8 +55,8 @@ namespace Bank.Pages.Accounts
                 _accountService.WithdrawOrDeposit(accountId, Amount, "Credit");
                 _accountService.RegisterTransaction(
                     accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), "Credit", "Credit in Cash");
-              
-                return RedirectToPage("Accounts");
+
+                return RedirectToPage("/Accounts/Account", new { accountId });
             }
      
             if (status == ErrorCode.IncorrectAmount)

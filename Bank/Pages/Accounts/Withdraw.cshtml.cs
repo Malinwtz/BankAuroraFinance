@@ -57,8 +57,7 @@ namespace Bank.Pages.Accounts
                 _accountService.RegisterTransaction(
                     accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), "Debit", "Withdrawal in Cash" );
 
-                return RedirectToPage("Accounts");
-
+                return RedirectToPage("/Accounts/Account", new { accountId });
             }
 
             if (status == ErrorCode.BalanceTooLow)

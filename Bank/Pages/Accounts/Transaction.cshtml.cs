@@ -69,8 +69,9 @@ namespace Bank.Pages.Accounts
                         _accountService.GetAccountBalance(accountId), "Debit", "Withdrawal in Cash");
                     _accountService.RegisterTransaction(ToAccount, TransactionDate, Amount,
                         _accountService.GetAccountBalance(ToAccount), "Credit", "Credit in Cash");
-                
-                    return RedirectToPage("Accounts");
+               
+                    return RedirectToPage("/Accounts/Account", new {accountId});
+                    //return Page(); kommer tillbaka till samma transfersida och parametrarna har inga värden
                 }
             }
 
