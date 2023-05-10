@@ -29,8 +29,8 @@ namespace Bank.Pages.Customers
 
         [Required(ErrorMessage = "Gender is required")]
         //[Range(1, 3, ErrorMessage = "Please choose a valid gender")]
-        public GenderEnum Gender { get; set; }
-        
+        public GenderEnum? Gender { get; set; }
+      
         public List<SelectListItem> Genders { get; set; }
 
             
@@ -62,7 +62,7 @@ namespace Bank.Pages.Customers
 
         [Required(ErrorMessage = "Country is required")]
         //[Range(1, 4, ErrorMessage = "Please choose a valid country")]
-        public CountryEnum Country { get; set; }
+        public CountryEnum? Country { get; set; }
 
 
         public List<SelectListItem> Countries { get; set; }
