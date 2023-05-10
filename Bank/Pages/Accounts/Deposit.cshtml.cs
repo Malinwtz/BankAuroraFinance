@@ -34,10 +34,14 @@ namespace Bank.Pages.Accounts
         [MaxLength(250, ErrorMessage = 
             "Comment max length is 250 characters")]
         public string Comment { get; set; }
+        public decimal Balance { get; set; }
+        public int Acc { get; set; }
 
 
         public void OnGet(int accountId)
         {
+            Balance = _accountService.GetAccount(accountId).Balance;
+            Acc = _accountService.GetAccount(accountId).AccountId;
             TransactionDate = DateTime.Now.AddHours(1);  
         }
 

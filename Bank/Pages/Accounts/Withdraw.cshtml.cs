@@ -36,8 +36,6 @@ namespace Bank.Pages.Accounts
         [MaxLength(250, ErrorMessage =
             "Comment max length is 250 characters")]
         public string Comment { get; set; }
-
-
         public decimal Balance { get; set; }
         public int Acc { get; set; }
 
