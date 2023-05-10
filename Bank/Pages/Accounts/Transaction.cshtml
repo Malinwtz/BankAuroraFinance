@@ -16,20 +16,18 @@
             <div class="card w-75">
 
                 <div class="card-header mt-2 text-center">
-                    <h1>@ViewData["Title"]</h1>
+                    <h1>Transfer from account No: @Model.FromAccount</h1>
                 </div>
+
                 <div class="card-body">
 
                     <div class="mb-3 mt-1">
                         <partial name="_BackPartial" />
                     </div>
 
-
-                    <div class="text-center">
-                        <h4>Transfer from account No: @Model.FromAccount</h4>
+                    <div class="text-center">       
                         <h5>Balance: @Model.Balance</h5>
                     </div>
-
 
                     <div class="card-body">
 
