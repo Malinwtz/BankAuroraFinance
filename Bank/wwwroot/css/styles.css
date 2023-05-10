@@ -4151,6 +4151,21 @@ textarea.form-control-lg {
 
 
 /*      ---  NAVIGERINGSMENY  ---       */
+/* MAIL */
+.nav-link.no-hover:hover {
+    cursor: default;
+    text-decoration: none;
+    pointer-events: none;
+       
+}
+.nav-item.no-hover:hover {
+    cursor: default;
+    text-decoration: none;
+    pointer-events: none;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+
 .navbar {
     position: relative;
     display: flex;
