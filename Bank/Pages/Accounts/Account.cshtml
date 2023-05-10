@@ -52,8 +52,8 @@
                                 <td>@Model.SingleAccount.AccountId</td>
                             </tr>
                             <tr>
-                                <th scope="col">Balance @Model.Today</th>
-                                <td>@Model.SingleAccount.Balance</td>
+                                <th scope="col">Balance</th>
+                                <td>@Model.SingleAccount.Balance.ToString("N2")</td>
                             </tr>
                             <tr>
                                 <th scope="col">Frequency</th>
@@ -61,7 +61,7 @@
                             </tr>
                             <tr>
                                 <th scope="col">Created</th>
-                                <td>@Model.SingleAccount.Created</td>
+                                <td>@Model.SingleAccount.Created.ToShortDateString()</td>
                             </tr>
                         </tbody>
                     </table>
