@@ -139,8 +139,7 @@ namespace Bank.Pages.Customers
 
                 _customerService.Update(customerDb);
 
-                //return RedirectToPage("/Customers/Customers");
-
+                TempData["SuccessMessage"] = "Updates registered";
                 return RedirectToPage("/Customers/Customer", new { customerId });
             }
             Genders = _customerService.FillGenderList();

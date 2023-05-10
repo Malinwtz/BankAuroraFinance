@@ -9,6 +9,7 @@ using Utilities.Services.Interfaces;
 using AutoMapper;
 using Utilities.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace Bank.Pages.Customers
 {
@@ -16,13 +17,16 @@ namespace Bank.Pages.Customers
     [Authorize(Roles = "Cashier")]
     public class NewCustomerModel : PageModel
     {
-        public NewCustomerModel(ICustomerService customerService, IMapper mapper)
+        public NewCustomerModel(ICustomerService customerService, IMapper mapper,
+            INotyfService toastNotification)
         {
             _customerService = customerService;
             _mapper = mapper;
+            _toastNotification = toastNotification;
         }
         private readonly ICustomerService _customerService;
         private readonly IMapper _mapper;
+        private readonly INotyfService _toastNotification;
 
         public CreateCustomerViewModel _createCustomerViewModel { get; set; }
 
@@ -121,7 +125,9 @@ namespace Bank.Pages.Customers
                 _mapper.Map(_createCustomerViewModel, customer);
 
                 _customerService.SaveNew(customer);
-                    return RedirectToPage("/Customers/Customers", new {customer.CustomerId });
+
+                TempData["SuccessMessage"] = $"New customer registered with id:{customer.CustomerId}";
+                return RedirectToPage("/Customers/Customers", new {customer.CustomerId });
             }
 
                 Genders = _customerService.FillGenderList();

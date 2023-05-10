@@ -69,9 +69,10 @@ namespace Bank.Pages.Accounts
                         _accountService.GetAccountBalance(accountId), "Debit", "Withdrawal in Cash");
                     _accountService.RegisterTransaction(ToAccount, TransactionDate, Amount,
                         _accountService.GetAccountBalance(ToAccount), "Credit", "Credit in Cash");
-               
+
+
+                    TempData["SuccessMessage"] = $"Transfer registered to account no: {ToAccount}";
                     return RedirectToPage("/Accounts/Account", new {accountId});
-                    //return Page(); kommer tillbaka till samma transfersida och parametrarna har inga värden
                 }
             }
 

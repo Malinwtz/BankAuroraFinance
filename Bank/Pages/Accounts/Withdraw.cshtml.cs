@@ -57,6 +57,7 @@ namespace Bank.Pages.Accounts
                 _accountService.RegisterTransaction(
                     accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), "Debit", "Withdrawal in Cash" );
 
+                TempData["SuccessMessage"] = "Withdraw registered";
                 return RedirectToPage("/Accounts/Account", new { accountId });
             }
 

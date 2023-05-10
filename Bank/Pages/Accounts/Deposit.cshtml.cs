@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Utilities;
 using Microsoft.AspNetCore.Authorization;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace Bank.Pages.Accounts
 {
@@ -17,7 +18,6 @@ namespace Bank.Pages.Accounts
             _accountService = accountService;
         }
         private readonly IAccountService _accountService;
-
 
         [Required(ErrorMessage = "Amount is required")]
         [Range(100, 25000, ErrorMessage = 
@@ -39,7 +39,7 @@ namespace Bank.Pages.Accounts
 
 
         public void OnGet(int accountId)
-        {
+        {          
             Balance = _accountService.GetAccount(accountId).Balance;
             Acc = _accountService.GetAccount(accountId).AccountId;
             TransactionDate = DateTime.Now.AddHours(1);  
@@ -56,6 +56,7 @@ namespace Bank.Pages.Accounts
                 _accountService.RegisterTransaction(
                     accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), "Credit", "Credit in Cash");
 
+                TempData["SuccessMessage"] = "Deposit registered";
                 return RedirectToPage("/Accounts/Account", new { accountId });
             }
      
