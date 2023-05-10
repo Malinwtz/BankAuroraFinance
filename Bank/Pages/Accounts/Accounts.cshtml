@@ -29,11 +29,13 @@
 
                     @*SEARCH*@
                     <form method="get" class="m-3 text-center">
-                        <input asp-for="@Model.Q" />
+                        <input asp-for="@Model.Q" placeholder="Search" />
                         <input type="hidden" asp-for="@Model.Country" />
-                        <input type="submit" value="Search" />
+                        <button type="submit" class="bg-white border-0">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
                     </form>
-
+                                     
                     <table class="table table-striped">
                         <thead>
                             <tr>
