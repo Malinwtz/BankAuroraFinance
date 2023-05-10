@@ -35,7 +35,10 @@
 
                             <div class="form-group mb-2">
                                 <label asp-for="Amount">Amount</label>
-                                <input class="form-control" asp-for="Amount" />
+                                <input class="form-control"
+                                       placeholder="Please insert amount here"
+                                       asp-for="Amount" 
+                                       value=""/>
                                 <span class="text-danger"
                                       asp-validation-for="Amount">
                                 </span>

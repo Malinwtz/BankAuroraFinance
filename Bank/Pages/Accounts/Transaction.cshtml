@@ -33,11 +33,12 @@
 
                         <form method="post">
 
-
                             <div class="form-group mb-2">
                                 <label asp-for="ToAccount">Receiving Account</label>
                                 <input asp-for="ToAccount"
-                                       class="form-control" />
+                                       class="form-control"
+                                       placeholder="Please insert receiving account here" 
+                                       value=""/>
                                 <span asp-validation-for="ToAccount"
                                       class="text-danger">
                                 </span>
@@ -46,7 +47,9 @@
                             <div class="form-group mb-2">
                                 <label asp-for="Amount">Amount</label>
                                 <input class="form-control"
-                                       asp-for="Amount" />
+                                       asp-for="Amount" 
+                                       placeholder="Please insert amount here"
+                                       value="" />
                                 <span class="text-danger"
                                       asp-validation-for="Amount">
                                 </span>
