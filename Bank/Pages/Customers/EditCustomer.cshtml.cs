@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Authorization;
+using Utilities.Models;
 
 
 namespace Bank.Pages.Customers
@@ -137,7 +138,10 @@ namespace Bank.Pages.Customers
                 _mapper.Map(_updateCustomerViewModel, customerDb);
 
                 _customerService.Update(customerDb);
-                return RedirectToPage("/Customers/Customers");
+
+                //return RedirectToPage("/Customers/Customers");
+
+                return RedirectToPage("/Customers/Customer", new { customerId });
             }
             Genders = _customerService.FillGenderList();
             Countries = _customerService.FillCountryList();

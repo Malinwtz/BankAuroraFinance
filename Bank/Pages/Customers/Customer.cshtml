@@ -47,7 +47,7 @@
                             </tr>
                             <tr>
                                 <th scope="col">Birthdate</th>
-                                <td>@Model.SingleCustomer.Birthday</td>
+                                <td>@(Model.SingleCustomer.Birthday.HasValue ? Model.SingleCustomer.Birthday.Value.ToString("d") : "")</td>
                             </tr>
                             <tr>
                                 <th scope="col">National Id</th>
@@ -104,7 +104,7 @@
                                 <tr>
                                     <td>@account.AccountId</td>
                                     <td>@account.Frequency</td>
-                                    <td>@account.Created</td>
+                                    <td>@account.Created.ToShortDateString()</td>
                                     <td>@account.Balance</td>
                                     <td><a asp-page="/Accounts/Account" asp-route-accountId="@account.AccountId" class="btn btn-sm btn-primary">View</a></td>
                                 </tr>

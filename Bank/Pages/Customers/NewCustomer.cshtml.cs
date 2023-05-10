@@ -121,7 +121,7 @@ namespace Bank.Pages.Customers
                 _mapper.Map(_createCustomerViewModel, customer);
 
                 _customerService.SaveNew(customer);
-                    return RedirectToPage("/Customers/Customers");
+                    return RedirectToPage("/Customers/Customers", new {customer.CustomerId });
             }
 
                 Genders = _customerService.FillGenderList();
