@@ -29,6 +29,22 @@ namespace Utilities.Services
 
 
             return filePath;
+
+            //var folderPath = Path.Combine(
+            //  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            //  "AuroraFinance", "TransactionMonitor", folderName);
+
+            ////var folderPath = Path.Combine(
+            ////@"C:\Users\malin\OneDrive\Dokument\KYH.NET22-24\5.Webbutveckling\AuroraFinance\TransactionMonitor", folderName);
+
+            //Directory.CreateDirectory(folderPath);
+
+            //var fileName = "SuspiciousTransfers_" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt";
+            //var filePath = Path.Combine(folderPath, fileName);
+
+            //return filePath;
+
+
         }
     }
 }

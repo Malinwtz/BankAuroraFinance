@@ -18,134 +18,132 @@
                     <h1>@ViewData["Title"]</h1>
                 </div>
                 <div class="card-body">
-
-                
+                                    
                         <div class="mb-3 mt-1">
                             <partial name="_BackPartial" />
                         </div>
                 
-
-
                     <div class="card-body">
                         <form method="post">
 
                             <div class="form-group mb-2">
-                                <label asp-for="Gender">Gender</label>
+                                <label asp-for="@Model.Customer.Gender">Gender</label>
                                 <select class="form-control"
-                                        asp-for="Gender"
+                                        asp-for="@Model.Customer.Gender"
                                         asp-items="@Model.Genders">
                                     <option value="">-- Select gender --</option>
                                 </select>
-                                <span asp-validation-for="Gender" class="text-danger"></span>
+                                <span asp-validation-for="@Model.Customer.Gender" class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="Givenname">First name</label>
+                                <label asp-for="@Model.Customer.Givenname">First name</label>
                                 <input class="form-control"
                                        placeholder="Insert first name here"
-                                       asp-for="Givenname">
-                                <span asp-validation-for="Givenname"
+                                       asp-for="@Model.Customer.Givenname">
+                                <span asp-validation-for="@Model.Customer.Givenname"
                                       class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="Surname">Last name</label>
+                                <label asp-for="@Model.Customer.Surname">Last name</label>
                                 <input class="form-control"
                                        placeholder="Insert last name here"
-                                       asp-for="Surname">
-                                <span asp-validation-for="Surname"
+                                       asp-for="@Model.Customer.Surname">
+                                <span asp-validation-for="@Model.Customer.Surname"
                                       class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="Streetaddress">Street address</label>
+                                <label asp-for="@Model.Customer.Streetaddress">Street address</label>
                                 <input class="form-control"
                                        placeholder="Insert street address here"
-                                       asp-for="Streetaddress">
-                                <span asp-validation-for="Streetaddress"
+                                       asp-for="@Model.Customer.Streetaddress">
+                                <span asp-validation-for="@Model.Customer.Streetaddress"
                                       class="text-danger"></span>
                             </div>
                             <div class="form-group mb-2">
-                                <label asp-for="Zipcode">Zip code</label>
+                                <label asp-for="@Model.Customer.Zipcode">Zip code</label>
                                 <input class="form-control"
                                        placeholder="Insert zip code here"
-                                       asp-for="Zipcode">
-                                <span asp-validation-for="Zipcode"
+                                       asp-for="@Model.Customer.Zipcode">
+                                <span asp-validation-for="@Model.Customer.Zipcode"
                                       class="text-danger"></span>
                             </div>
                             <div class="form-group mb-2">
-                                <label asp-for="City">City</label>
+                                <label asp-for="@Model.Customer.City">City</label>
                                 <input class="form-control"
                                        placeholder="Insert city here"
-                                       asp-for="City">
-                                <span asp-validation-for="City"
+                                       asp-for="@Model.Customer.City">
+                                <span asp-validation-for="@Model.Customer.City"
                                       class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="Country">Country</label>
+                                <label asp-for="@Model.Customer.Country">Country</label>
                                 <select class="form-control"
-                                        asp-for="Country"
+                                        asp-for="@Model.Customer.Country"
                                         asp-items="@Model.Countries"
                                         onchange="updateTelephoneCountryCode(this.value)">
                                     <option value="">-- Select country --</option>
                                 </select>
-                                <span asp-validation-for="Country" class="text-danger"></span>
+                                <span asp-validation-for="@Model.Customer.Country" class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="CountryCode">Country Code</label>
+                                <label asp-for="@Model.Customer.CountryCode">Country Code</label>
                                 <input class="form-control"
                                        id="CountryCode"
                                        placeholder="Insert Country Code here"
-                                       asp-for="CountryCode">
-                                <span asp-validation-for="CountryCode"
+                                       asp-for="@Model.Customer.CountryCode">
+                                <span asp-validation-for="@Model.Customer.CountryCode"
                                       class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="Birthday">Birth date</label>
+                                <label asp-for="@Model.Customer.Birthday">Birth date</label>
                                 <input class="form-control"
                                        placeholder="Insert birth date here"
-                                       asp-for="Birthday">
-                                <span asp-validation-for="Birthday"
+                                       asp-for="@Model.Customer.Birthday">
+                                <span asp-validation-for="@Model.Customer.Birthday"
                                       class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="NationalId">National Id</label>
-                                <input class="form-control"
+                                <label asp-for="@Model.Customer.NationalId">National Id</label>
+                                <input type="text"
+                                       class="form-control" 
                                        placeholder="Insert national Id here"
-                                       asp-for="NationalId">
-                                <span asp-validation-for="NationalId"
+                                       asp-for="@Model.Customer.NationalId">    
+                                <span asp-validation-for="@Model.Customer.NationalId"
                                       class="text-danger"></span>
                             </div>
 
-                            <div class="form-group mb-2">
-                                <label asp-for="Telephonecountrycode">Telephone country code</label>
+                           <div class="form-group mb-2">
+                                <label asp-for="@Model.Customer.Telephonecountrycode">Telephone country code</label>
                                 <input class="form-control"
                                        id="Telephonecountrycode"
                                        placeholder="Insert telephone country code here"
-                                       asp-for="Telephonecountrycode">
-                                <span asp-validation-for="Telephonecountrycode"
+                                       asp-for="@Model.Customer.Telephonecountrycode">
+                                <span asp-validation-for="@Model.Customer.Telephonecountrycode"
                                       class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="Telephonenumber">Telephone number</label>
+                                <label asp-for="@Model.Customer.Telephonenumber">Telephone number</label>
                                 <input class="form-control"
                                        placeholder="Insert telephone number here"
-                                       asp-for="Telephonenumber">
-                                <span asp-validation-for="Telephonenumber"
+                                       asp-for="@Model.Customer.Telephonenumber">
+                                <span asp-validation-for="@Model.Customer.Telephonenumber"
                                       class="text-danger"></span>
                             </div>
 
                             <div class="form-group mb-2">
-                                <label asp-for="Emailaddress">Email</label>
+                                <label asp-for="@Model.Customer.Emailaddress">Email</label>
                                 <input class="form-control"
                                        placeholder="Insert email here"
-                                       asp-for="Emailaddress">
-                                <span asp-validation-for="Emailaddress"
+                                       asp-for="@Model.Customer.Emailaddress">
+                                <span asp-validation-for="@Model.Customer.Emailaddress"
                                       class="text-danger"></span>
                             </div>
 
