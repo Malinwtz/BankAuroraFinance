@@ -84,10 +84,14 @@ Pagination
 This application uses pagination to display the customer and accounts lists. This improves performance and makes it easier for users to navigate the lists.
 
 
+Back Button
+
+This application includes a back button that allows users to go back to the previous page. The back button is implemented as a partial and is included on most pages.
+
+
 Deployment
 
 This application is published to Azure. Users can access the application from anywhere with an internet connection.
-
 Link to project in Azure: https://aurorafinance.azurewebsites.net
 
 
