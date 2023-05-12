@@ -24,11 +24,9 @@ namespace Utilities.Data
         private void SeedUsers()
         {
             AddUserIfNotExists("richard.chalk@systementor.se", "Hejsan123#", new string[] { "Admin" });
-            AddUserIfNotExists("richard.chalk@cashier.systementor.se", "Hejsan123#", new string[] { "Cashier" });
-            //tagit bort customeranvändare - ska inte finnas
+            AddUserIfNotExists("richard.erdos.chalk@gmail.se", "Hejsan123#", new string[] { "Cashier" });
         }
 
-        // Här finns möjlighet att uppdatera dina användares roller
         private void SeedRoles()
         {
             AddRoleIfNotExisting("Admin");
