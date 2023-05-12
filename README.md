@@ -4,17 +4,26 @@ Bank Aurora Finance
 This is a web application built using ASP.NET Core and Razor Pages. It allows customers to view their accounts and transactions, and allows cashiers to manage customer accounts and transactions. It also includes an admin role that can manage users.
 
 
-Technologies Used
+Technologies Used:
 
 ASP.NET Core 6.0
+
 Razor Pages
+
 Entity Framework Core (Database First)
+
 ASP.NET Core Identity
+
 AutoMapper
+
 Bootstrap (for styling)
+
 Web API
+
 Console Application
+
 JavaScript
+
 Azure
 
 Features
