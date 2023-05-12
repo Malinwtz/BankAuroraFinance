@@ -6,7 +6,7 @@ This is a web application built using ASP.NET Core and Razor Pages. It allows cu
 
 Technologies Used
 
-ASP.NET Core
+ASP.NET Core 6.0
 Razor Pages
 Entity Framework Core (Database First)
 ASP.NET Core Identity
@@ -14,7 +14,8 @@ AutoMapper
 Bootstrap (for styling)
 Web API
 Console Application
-
+JavaScript
+Azure
 
 Features
 
@@ -59,4 +60,50 @@ This application includes a Web API that allows other applications to access the
 Console Application
 
 This application includes a console application that checks for suspicious transfers. The console application uses the Web API to retrieve the necessary data.
+
+
+Input Validation
+
+This application handles input validation to ensure that all user input is valid and safe. This includes server-side validation and client-side validation using JavaScript.
+
+
+Search Functionality
+
+This application includes search functionality that allows users to search for customers and accounts. The search functionality is implemented using LINQ queries.
+
+
+Javascript Functionality
+
+This application uses JavaScript to implement a show more function that allows users to load more transactions on the customer's page.
+
+It also uses JavaScript to implement an autofill function in the customer form. When a user enters a customer's country, the form is automatically populated with more details.
+
+
+Pagination
+
+This application uses pagination to display the customer and accounts lists. This improves performance and makes it easier for users to navigate the lists.
+
+
+Deployment
+
+This application is published to Azure. Users can access the application from anywhere with an internet connection.
+
+Link to project in Azure: https://aurorafinance.azurewebsites.net
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
