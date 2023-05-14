@@ -9,20 +9,16 @@
 </head>
 
 
-<!-- Signup-->
 <section class="signup-section" id="signup">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5">
-
 
             @if (TempData["SuccessMessage"] != null)
             {
                 <div class="alert alert-success">@TempData["SuccessMessage"]</div>
             }
 
-
             <div class="card d-flex justify-content-center">
-
                 <div class="card-header mt-2 text-center">
                     <h1>@Model.SingleCustomer.Givenname @Model.SingleCustomer.Surname</h1>
                 </div>
@@ -33,8 +29,6 @@
                     </div>
 
                     <div class="d-flex justify-content-center">
-                     
-
                         <div class="m-3">
                             <a asp-page="/Customers/EditCustomer"
                                asp-route-customerId="@Model.SingleCustomer.CustomerId"
@@ -43,7 +37,6 @@
                             </a>
                         </div>
                     </div>
-
 
                     @*Customer information table*@
                     <table class="table table-striped">
@@ -141,15 +134,11 @@
                         <a class="btn btn-secondary" href="javascript:showMore();">Show More</a>
                     </div>
 
-
                 </div>
-
             </div>
         </div>
     </div>
 </section>
-
-
 
 
 @section Scripts
@@ -161,18 +150,17 @@
             showMore();
         });
         function showMore() {
-            //pagenum och customerid är känsliga och behöver heta samma som i din onget
             fetch(`/Customers/Customer?handler=ShowMore&customerId=${CustomerId}&pageNum=${pageNum}`)
                 .then((response) => response.json())
                 .then((json) => {
-                    console.log('JSON data:', json); //visar om du får nån json data F12 console.log
+                    console.log('JSON data:', json); 
                     pageNum = pageNum + 1;
                     json.transactions.forEach(drawElements);
                 })
-                .catch((error) => console.log(error)); //error loggning
+                .catch((error) => console.log(error)); 
         }
         function drawElements(element) {
-            console.log('Element:', element); //kollar om den får sina element
+            console.log('Element:', element); 
             document.querySelector('#posts-table tbody').innerHTML +=
                 `<tr>
                             <td>${element.amount}</td>

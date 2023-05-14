@@ -8,24 +8,17 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 
-<!-- Signup-->
 <section class="signup-section" id="signup">
-
-    <div class="container px-4 px-lg-5">
-      
-        <div class="row gx-4 gx-lg-5">
-           
+    <div class="container px-4 px-lg-5">      
+        <div class="row gx-4 gx-lg-5">           
 
             <div class="card d-flex justify-content-center">
-
                 <div class="card-header mt-2 text-center">
                     <h1 class="display-4">Top 10 Accounts </h1>
                     <h1 class="display-4">@Model.Country</h1>
                 </div>
 
                 <div class="card-body">
-
-
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -49,7 +42,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach (var a in Model.Accounts)
                             {
                                 <tr>
@@ -62,16 +54,12 @@
 
                                 </tr>
                             }
-
                         </tbody>
                     </table>
-
-                  
+                                      
                         <div class="mb-3 mt-1">
                             <partial name="_BackPartial" />
-                        </div>
-                 
-
+                        </div>                 
                 </div>
             </div>
         </div>

@@ -135,8 +135,6 @@ public class CustomerService : ICustomerService
             .AsQueryable()
             .ToList();
 
-        //var accountVMs = _mapper.Map<List<AccountViewModel>>(accounts);
-
         var accountVMs = new List<AccountViewModel>();
 
         foreach (var account in accounts)
@@ -155,11 +153,6 @@ public class CustomerService : ICustomerService
 
     public decimal GetCustomerBalance(int customerId)
     {
-        //hämta kund med id.
-        //where för filtrering på kundid. 
-        //selectmany för att platta ut collection av dispositions
-        //select account associerad med varje disposition
-        //summera ihop alla kundens kontons balance 
         var customerBalance = _dbContext.Customers
             .Where(c=> c.CustomerId ==customerId)
             .SelectMany(c=>c.Dispositions)

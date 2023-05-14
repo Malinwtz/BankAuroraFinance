@@ -12,14 +12,11 @@ namespace Bank.Pages.Customers
     [Authorize(Roles = "Cashier")]
     public class CustomerModel : PageModel
     {
-        public CustomerModel(BankAppDataContext dbContext, 
-            ICustomerService customerService, IAccountService accountService)
+        public CustomerModel(ICustomerService customerService, IAccountService accountService)
         {
-            _dbContext = dbContext;
             _customerService = customerService;
             _accountService = accountService;
         }
-        private readonly BankAppDataContext _dbContext;
         private readonly ICustomerService _customerService;
         private readonly IAccountService _accountService;
 
@@ -37,14 +34,14 @@ namespace Bank.Pages.Customers
         {
             SingleCustomer = _customerService.GetCustomerVM(customerId);         
 
-            //lägg i service
-            var customer = _dbContext.Customers
-                .First(c => c.CustomerId == customerId);
-
             Id = customerId;
+            
             Balance = _customerService.GetCustomerBalance(customerId);
+            
             NumberOfAccounts = _customerService.GetNumberOfCustomerAccounts(customerId);
+            
             Accounts = _customerService.GetAccountVMsForCustomer(customerId);
+            
             Today = DateTime.Now.ToShortDateString();
         }
 

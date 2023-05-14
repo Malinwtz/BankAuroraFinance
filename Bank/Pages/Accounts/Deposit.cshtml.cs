@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Utilities;
 using Microsoft.AspNetCore.Authorization;
-using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace Bank.Pages.Accounts
 {
@@ -48,7 +47,7 @@ namespace Bank.Pages.Accounts
 
         public IActionResult OnPost(int accountId)
         {            
-            var status = _accountService.ReturnErrorCode(accountId, Amount, Comment, true);
+            var status = _accountService.ReturnErrorCode(accountId, Amount, Comment, true, TransactionDate);
 
             if (ModelState.IsValid && status == ErrorCode.Ok)
             {              
@@ -75,15 +74,13 @@ namespace Bank.Pages.Accounts
                 ModelState.AddModelError("Comment", "Comment is too long");
             }
 
-
-            if (TransactionDate < DateTime.Now) //lägg till i utilities.errorcode?
+            if(status == ErrorCode.DateError)
             {
                 ModelState.AddModelError(
-                    "TransactionDate", "Transaction date must be in the future");
+                    "TransactionDate", "Deposit date must be in the future");
             }
 
             return Page();
-
         }
     }
 }

@@ -6,6 +6,7 @@
         BalanceTooLow,
         IncorrectAmount,
         CommentTooShort,
-        CommentTooLong
+        CommentTooLong,
+        DateError
     }
 }

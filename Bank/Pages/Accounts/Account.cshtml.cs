@@ -32,26 +32,11 @@ namespace Bank.Pages.Accounts
 
         public IActionResult OnGetShowMore(int accountId, int pageNum)
         {
-            //hämtar trasactions från databas flytta detta till service
             var transactions = _accountService1.GetTransactionsFromCustomerId(accountId, pageNum);
 
-            // _dbContext.Transactions
-            //.Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
-            //.Where(a => a.AccountNavigation.Dispositions.Any(d => d.CustomerId == customerId))
-            //.OrderByDescending(d => d.Date)
-            ////nedan kan tas bort när man har en automabinda dom
-            //.Select(s => new TransactionViewModel
-            //{
-            //    TransactionId = s.TransactionId,
-            //    Date = s.Date,
-            //    Type = s.Type,
-            //    Amount = s.Amount,
-            //    Balance = s.Balance
-            //}).GetPaged(pageNum, 10); //använder mi ska ladda in
+            Transactions = transactions.Results.ToList(); 
 
-            Transactions = transactions.Results.ToList(); //populerar Transactions lista med min modell
-
-            return new JsonResult(new { Transactions }); //returnerar ny json array
+            return new JsonResult(new { Transactions }); 
         }
     }
 }

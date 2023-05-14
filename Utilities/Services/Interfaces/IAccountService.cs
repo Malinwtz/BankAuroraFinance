@@ -14,7 +14,7 @@ public interface IAccountService
     void Update(Account account);
     List<AccountViewModel> GetTopTenAccounts();
     int GetLastPageNo();
-    ErrorCode ReturnErrorCode(int accountId, decimal amount, string comment, bool deposition);
+    ErrorCode ReturnErrorCode(int accountId, decimal amount, string comment, bool deposition, DateTime date);
     void WithdrawOrDeposit(int accountId, decimal amount, string type);
     void RegisterTransaction(int accountId, DateTime date, decimal amount, decimal balance, string type, string operation);
     PagedResult<TransactionViewModel> GetTransactionsFromCustomerId(int customerId, int pageNum);

@@ -55,11 +55,11 @@ namespace Bank.Pages.Accounts
 
         public IActionResult OnPost(int accountId)
         {
-            var status = _accountService.ReturnErrorCode(accountId, Amount, Comment, true);
+            var status = _accountService.ReturnErrorCode(accountId, Amount, Comment, true, TransactionDate);
                
             var ifReceivingAccount = _accountService.IfAccountExists(ToAccount);
 
-            if (ModelState.IsValid && ifReceivingAccount == true && TransactionDate > DateTime.Now && Comment != null)
+            if (ModelState.IsValid && ifReceivingAccount == true)
             {
                 if (status == ErrorCode.Ok)
                 {
@@ -91,20 +91,20 @@ namespace Bank.Pages.Accounts
                 ModelState.AddModelError("ToAccount", "Receiving account could not be found");
             }
 
-            if (TransactionDate < DateTime.Now)
+            if (status == ErrorCode.DateError)
             {
                 ModelState.AddModelError(
-                    "TransactionDate", "Deposit Date must be in the future");
+                    "TransactionDate", "Transaction date must be in the future");
             }
-            if (Comment.Length < 5)
+
+            if (status == ErrorCode.CommentTooShort)
             {
-                ModelState.AddModelError(
-                    "Comment", "Comment is too short");
+                ModelState.AddModelError("Comment", "Comment is too short");
             }
-            if (Comment.Length > 50)
+
+            if (status == ErrorCode.CommentTooLong)
             {
-                ModelState.AddModelError(
-                    "Comment", "Comment is too long");
+                ModelState.AddModelError("Comment", "Comment is too long");
             }
 
             return Page();

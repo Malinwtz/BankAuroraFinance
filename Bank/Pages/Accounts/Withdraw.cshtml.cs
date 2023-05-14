@@ -49,7 +49,7 @@ namespace Bank.Pages.Accounts
 
         public IActionResult OnPost(int accountId)
         {           
-            var status = _accountService.ReturnErrorCode(accountId, Amount, Comment, false);
+            var status = _accountService.ReturnErrorCode(accountId, Amount, Comment, false, TransactionDate);
 
             if (ModelState.IsValid && status == ErrorCode.Ok)
             {
@@ -81,12 +81,12 @@ namespace Bank.Pages.Accounts
                 ModelState.AddModelError("Comment", "Comment is too long");
             }
 
-            if (TransactionDate < DateTime.Now)
+            if (status == ErrorCode.DateError)
             {
                 ModelState.AddModelError(
-                    "TransactionDate", "Deposit Date must be in the future");
+                    "TransactionDate", "Withdrawal date must be in the future");
             }
-
+         
             return Page();
         }
     }

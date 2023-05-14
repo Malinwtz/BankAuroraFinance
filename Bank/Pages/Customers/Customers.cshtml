@@ -9,7 +9,6 @@
     <link href="~/css/styles.css" rel="stylesheet" />
 </head>
 
-<!-- Signup-->
 <section class="signup-section" id="signup">
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5">
@@ -180,9 +179,9 @@
                                         <td>@c.Country</td>
                                         <td class="d-none d-xl-table-cell">@c.City</td>
 
-                                        @*för att komma till rätt sida måste asp-route-id (id) vara samma som i customer onget-parameter *@
-                                        <td><a asp-page="/Customers/Customer" asp-route-customerId="@c.CustomerId" class="btn btn-sm btn-primary">View</a></td>
-
+                                        <td><a asp-page="/Customers/Customer" 
+                                            asp-route-customerId="@c.CustomerId" 
+                                            class="btn btn-sm btn-primary">View</a></td>
                                     </tr>
                                 }
                                 <tr>
@@ -250,17 +249,3 @@
     </div>
 </section>
 
-
-@*
-
-<!-- Signup-->
-<section class="signup-section" id="signup">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5">
-            <div class=" text-center">
-            </div>
-        </div>
-    </div>
-</section>
-
-*@

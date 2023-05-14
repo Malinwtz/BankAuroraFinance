@@ -84,12 +84,6 @@ public class AccountService : IAccountService
 
         return accounts;
 
-        //var accounts = _dbContext.Accounts
-        //    .OrderByDescending(a => a.Balance)
-        //    .Take(10)
-        //    .ToList();
-
-        //return _mapper.Map<List<AccountViewModel>>(accounts);     //object not set to an instance?? funkar inte med azure??
     }
 
     public int GetLastPageNo()
@@ -128,7 +122,7 @@ public class AccountService : IAccountService
         _dbContext.SaveChanges();
     }
 
-    public ErrorCode ReturnErrorCode(int accountId, decimal amount, string comment, bool deposition)
+    public ErrorCode ReturnErrorCode(int accountId, decimal amount, string comment, bool deposition, DateTime date)
     {
         var accountDb = _dbContext.Accounts
                 .First(a => a.AccountId == accountId);
@@ -154,6 +148,11 @@ public class AccountService : IAccountService
         if (comment.Length > 50)
         {
             return ErrorCode.CommentTooLong;
+        }
+
+        if (date < DateTime.Now)
+        {
+            return ErrorCode.DateError;
         }
 
         return ErrorCode.Ok;
@@ -187,7 +186,6 @@ public class AccountService : IAccountService
                .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
                .Where(a => a.AccountNavigation.Dispositions.Any(d => d.CustomerId == customerId))
                .OrderByDescending(d => d.Date).ThenByDescending(d => d.TransactionId)
-               //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda 
                .Select(s => new TransactionViewModel
                {
                    TransactionId = s.TransactionId,
@@ -206,7 +204,6 @@ public class AccountService : IAccountService
                .Include(a => a.AccountNavigation).ThenInclude(d => d.Dispositions)
                .Where(a => a.AccountNavigation.Dispositions.Any(d => d.AccountId == accountId))
                .OrderByDescending(d => d.Date).ThenByDescending(d => d.TransactionId)
-               //nedan kan tas bort när man har en automapper men just nu måste man definera properies / binda 
                .Select(s => new TransactionViewModel
                {
                    TransactionId = s.TransactionId,
@@ -245,7 +242,6 @@ public class AccountService : IAccountService
         return suspiciousTransfers;
     }
     
-
     public List<AccountWithSuspectTransactions> GetTransactionsOver23000()
     {
         var fromDate = DateTime.Now.AddDays(-3);

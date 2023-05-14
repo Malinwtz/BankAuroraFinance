@@ -19,16 +19,10 @@ namespace Bank.Pages.Accounts
         public string Country { get; set; }
         public List<AccountViewModel> Accounts { get; set; }
 
-
-
-
         public void OnGet(string country)
         {
-
             Country = country;
-
             Accounts = _accountService.GetTopTenAccounts();
-
         }
     }
 }
