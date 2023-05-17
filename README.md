@@ -5,6 +5,33 @@ This is a web application built using ASP.NET Core and Razor Pages. It allows cu
 
 
 
+Features
+
+Authentication and Authorization: This application uses ASP.NET Core Identity for authentication and authorization. Two types of users are seeded into the database: cashiers and admins.
+
+
+Login cashier 
+
+Username: richard.erdos.chalk@gmail.se
+Password: Hejsan123#
+
+Cashiers can perform the following tasks:
+
+View a list of customers
+View a list of transactions
+Create new customers
+Make transactions for customers
+
+
+Admins can perform the following tasks:
+
+View a list of all users
+Create new users
+Edit user roles
+Delete users
+
+
+
 Technologies Used:
 
 ASP.NET Core 6.0
@@ -26,28 +53,6 @@ Console Application
 JavaScript
 
 Azure
-
-
-
-Features
-
-Authentication and Authorization: This application uses ASP.NET Core Identity for authentication and authorization. Two types of users are seeded into the database: cashiers and admins.
-
-
-Cashiers can perform the following tasks:
-
-View a list of customers
-View a list of transactions
-Create new customers
-Make transactions for customers
-
-
-Admins can perform the following tasks:
-
-View a list of all users
-Create new users
-Edit user roles
-Delete users
 
 
 
