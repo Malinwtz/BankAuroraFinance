@@ -20,6 +20,7 @@ namespace Bank.Pages.Accounts
         private readonly IAccountService _accountService1;
 
         public Account SingleAccount { get; set; }
+        public Customer SingleCustomer { get; set; }
         public string Today { get; set; }
         public List<TransactionViewModel> Transactions { get; set; }
 
@@ -27,6 +28,7 @@ namespace Bank.Pages.Accounts
         public void OnGet(int accountId)
         {
             SingleAccount = _singleAccountService.GetAccount(accountId);
+            SingleCustomer = _singleAccountService.GetCustomerFromAccountId(accountId);   
             Today = DateTime.Now.ToShortDateString();
         }
 

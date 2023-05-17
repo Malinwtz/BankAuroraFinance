@@ -1,4 +1,5 @@
-﻿using Utilities.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Utilities.Models;
 using Utilities.Services.Interfaces;
 
 namespace Utilities.Services
@@ -31,6 +32,6 @@ namespace Utilities.Services
             }
 
             return customers.ToList();
-        }
+        }     
     }
 }

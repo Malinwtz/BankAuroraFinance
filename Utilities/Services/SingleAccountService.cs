@@ -1,4 +1,5 @@
-﻿using Utilities.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Utilities.Models;
 using Utilities.Services.Interfaces;
 
 namespace Utilities.Services
@@ -32,7 +33,14 @@ namespace Utilities.Services
             return _dbContext.Accounts.First(a => a.AccountId == accountId);
         }
 
-      
+        public Customer GetCustomerFromAccountId(int accountId)
+        {
+            var customer = _dbContext.Customers
+               .Include(c => c.Dispositions).ThenInclude(d => d.Account)
+               .First(c => c.Dispositions.Any(a => a.AccountId == accountId));
+
+            return customer;
+        }
 
     }
 }

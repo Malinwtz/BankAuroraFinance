@@ -140,12 +140,18 @@
     </div>
 </section>
 
+@*@section Scripts
+    {
+    <script src="~/js/ShowMoreScript.min.js"></script>
+}
+*@
 
 @section Scripts
     {
     <script>
         pageNum = 1;
         CustomerId = @Model.SingleCustomer.CustomerId;
+
         document.addEventListener("DOMContentLoaded", function () {
             showMore();
         });
