@@ -24,14 +24,30 @@ namespace TransactionMonitor
 
         public void Run()
         {
+            //  RunCountry2("SuspiciousTransfersSWE", "SWEDEN");
+
             RunCountry("Sweden", "SuspiciousTransfersSE");
             RunCountry("Norway", "SuspiciousTransfersNO");
             RunCountry("Finland", "SuspiciousTransfersFI");
             RunCountry("Denmark", "SuspiciousTransfersDK");
+
         }
+
+        public void RunCountry2(string foldername, string country)
+        {
+            var dir = "../../../TransactionLog";
+
+            if(!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            File.WriteAllText(Path.Combine(dir, foldername), country);
+        }
+
         public void RunCountry(string country, string folderPath)
-        {             
-            var filePath = _transactionMonitorService.CreateFolderWithPath(folderPath);            
+        {
+            var filePath = _transactionMonitorService.CreateFolderWithPath(folderPath, country);            
             DateTime lastTimeOfDay = DateTime.MinValue;                 
 
             if (File.Exists(filePath))
@@ -64,7 +80,7 @@ namespace TransactionMonitor
                     var customer = _accountService.GetSuspiciousCustomer(transaction.AccountId);
                     _accountService.SaveToTextFile(customer, transaction, filePath);
                 }
-                File.AppendAllText(filePath, Environment.NewLine + "Time of day: "
+                File.AppendAllText(filePath, Environment.NewLine + "Time monitoring: "
                     + Environment.NewLine + DateTime.Now.TimeOfDay.ToString());     
         }
     }

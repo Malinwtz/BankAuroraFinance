@@ -8,6 +8,6 @@ namespace Utilities.Services.Interfaces
 {
     public interface ITransactionMonitorService
     {
-        string CreateFolderWithPath(string folderName);
+        string CreateFolderWithPath(string folderName, string country);
     }
 }

@@ -1,0 +1,6 @@
+
+
+Single transfers over 15000:
+Transfers (total sum of transfers/account) over 23000:
+Time of day: 
+10:24:07.7696932

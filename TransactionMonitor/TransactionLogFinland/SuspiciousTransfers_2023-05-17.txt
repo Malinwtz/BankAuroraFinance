@@ -1,0 +1,9 @@
+
+
+Single transfers over 15000:
+Transfers (total sum of transfers/account) over 23000:
+   Customer: 1843, Account: 1520, Transaction: 1061199, Amount: 8001,00
+   Customer: 1843, Account: 1520, Transaction: 1061198, Amount: 8000,00
+   Customer: 1843, Account: 1520, Transaction: 1061197, Amount: 8000,00
+Time of day: 
+10:24:07.7364670
