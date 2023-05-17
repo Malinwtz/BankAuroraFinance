@@ -24,8 +24,7 @@ namespace TransactionMonitor
 
         public void Run()
         {
-            //  RunCountry2("SuspiciousTransfersSWE", "SWEDEN");
-
+           
             RunCountry("Sweden", "SuspiciousTransfersSE");
             RunCountry("Norway", "SuspiciousTransfersNO");
             RunCountry("Finland", "SuspiciousTransfersFI");
@@ -33,18 +32,7 @@ namespace TransactionMonitor
 
         }
 
-        public void RunCountry2(string foldername, string country)
-        {
-            var dir = "../../../TransactionLog";
-
-            if(!Directory.Exists(dir))
-            {
-                Directory.CreateDirectory(dir);
-            }
-
-            File.WriteAllText(Path.Combine(dir, foldername), country);
-        }
-
+       
         public void RunCountry(string country, string folderPath)
         {
             var filePath = _transactionMonitorService.CreateFolderWithPath(folderPath, country);            

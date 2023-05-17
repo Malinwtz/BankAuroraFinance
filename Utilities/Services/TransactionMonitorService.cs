@@ -11,11 +11,9 @@ namespace Utilities.Services
     public class TransactionMonitorService : ITransactionMonitorService
     {
        
-        public TransactionMonitorService(BankAppDataContext dbContext)
+        public TransactionMonitorService()
         {
-            _dbContext = dbContext;
         } 
-        private readonly BankAppDataContext _dbContext;
 
         public string CreateFolderWithPath(string folderName, string country)
         {
@@ -31,16 +29,7 @@ namespace Utilities.Services
 
             return filePath;
 
-            //var folderPath = Path.Combine(
-            //  Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            //  "AuroraFinance", "TransactionMonitor", folderName);
-
-            //Directory.CreateDirectory(folderPath);
-
-            //var fileName = "SuspiciousTransfers_" + DateTime.Now.ToString("yyyy-MM-dd") + ".txt";
-            //var filePath = Path.Combine(folderPath, fileName);
-
-            //return filePath;
+            
         }
     }
 }
