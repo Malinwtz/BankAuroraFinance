@@ -65,6 +65,16 @@
                                 <th scope="col">Created</th>
                                 <td>@Model.SingleAccount.Created.ToShortDateString()</td>
                             </tr>
+                            <tr>
+                                <th scope="col">Customer</th>
+                                <td>
+                                    <a asp-page="/Customers/Customer" 
+                                    asp-route-customerId="@Model.SingleCustomer.CustomerId" 
+                                    class="btn btn-sm btn-primary">
+                                    View
+                                    </a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                                         
