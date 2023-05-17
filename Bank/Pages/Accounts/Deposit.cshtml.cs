@@ -49,11 +49,12 @@ namespace Bank.Pages.Accounts
         {            
             var status = _accountService.ReturnErrorCode(accountId, Amount, Comment, true, TransactionDate);
 
-            if (ModelState.IsValid && status == ErrorCode.Ok)
+            if (ModelState.IsValid && status == ErrorCode.Ok || ModelState.IsValid && status == ErrorCode.BalanceTooLow)
             {              
                 _accountService.WithdrawOrDeposit(accountId, Amount, "Credit");
                 _accountService.RegisterTransaction(
-                    accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), "Credit", "Credit in Cash");
+                    accountId, TransactionDate, Amount, _accountService.GetAccountBalance(accountId), 
+                    "Credit", "Credit in Cash");
 
                 TempData["SuccessMessage"] = "Deposit registered";
                 return RedirectToPage("/Accounts/Account", new { accountId });
